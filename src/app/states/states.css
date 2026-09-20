@@ -1,0 +1,108 @@
+.states-page {
+  min-height: 100vh;
+  background: #fffaf3;
+  padding: 30px 6%;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.brand h2 {
+  margin: 0;
+  font-size: 30px;
+  color: #e85d24;
+  font-weight: 700;
+}
+
+.states-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.states-header h1 {
+  font-size: 38px;
+  color: #292929;
+  margin: 0 0 10px;
+}
+
+.states-header p {
+  color: #777;
+  font-size: 16px;
+  margin: 0;
+}
+
+.states-section {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.state-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  min-height: 150px;
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.25s ease;
+}
+
+.state-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.13);
+}
+
+.state-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff0dc;
+  font-size: 55px;
+}
+
+.state-content {
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.state-content h2 {
+  margin: 0 0 15px;
+  font-size: 25px;
+  color: #292929;
+}
+
+.state-content a {
+  width: fit-content;
+  background: #e85d24;
+  color: white;
+  padding: 9px 18px;
+  border-radius: 22px;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.state-content a:hover {
+  background: #c94b19;
+}
+
+@media (max-width: 700px) {
+  .state-card {
+    grid-template-columns: 1fr;
+  }
+
+  .state-image {
+    height: 120px;
+  }
+
+  .state-content {
+    padding: 22px;
+  }
+}

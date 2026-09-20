@@ -1,0 +1,210 @@
+<div class="states-page">
+
+  <div class="brand">
+    <h2>SwaadSetu 🍛</h2>
+  </div>
+
+  <header class="states-header">
+    <h1>Choose a State 🇮🇳</h1>
+    <p>Select a state to discover its traditional recipes.</p>
+  </header>
+
+  <!-- North India -->
+  <section class="states-section" *ngIf="region === 'north'">
+
+    <div class="state-card">
+      <div class="state-image">🌾</div>
+      <div class="state-content">
+        <h2>Punjab</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🏜️</div>
+      <div class="state-content">
+        <h2>Rajasthan</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🛕</div>
+      <div class="state-content">
+        <h2>Uttar Pradesh</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- South India -->
+  <section class="states-section" *ngIf="region === 'south'">
+
+    <div class="state-card">
+      <div class="state-image">🌴</div>
+      <div class="state-content">
+        <h2>Tamil Nadu</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🥥</div>
+      <div class="state-content">
+        <h2>Kerala</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🌿</div>
+      <div class="state-content">
+        <h2>Karnataka</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- East India -->
+  <section class="states-section" *ngIf="region === 'east'">
+
+    <div class="state-card">
+      <div class="state-image">🏞️</div>
+      <div class="state-content">
+        <h2>Odisha</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🐟</div>
+      <div class="state-content">
+        <h2>West Bengal</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🌾</div>
+      <div class="state-content">
+        <h2>Bihar</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🌳</div>
+      <div class="state-content">
+        <h2>Jharkhand</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- West India -->
+  <section class="states-section" *ngIf="region === 'west'">
+
+    <div class="state-card">
+      <div class="state-image">🥭</div>
+      <div class="state-content">
+        <h2>Maharashtra</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🪔</div>
+      <div class="state-content">
+        <h2>Gujarat</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🌊</div>
+      <div class="state-content">
+        <h2>Goa</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Northeast India -->
+  <section class="states-section" *ngIf="region === 'northeast'">
+
+    <div class="state-card">
+      <div class="state-image">🌿</div>
+      <div class="state-content">
+        <h2>Assam</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🏔️</div>
+      <div class="state-content">
+        <h2>Sikkim</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🌄</div>
+      <div class="state-content">
+        <h2>Nagaland</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🏞️</div>
+      <div class="state-content">
+        <h2>Arunachal Pradesh</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🌳</div>
+      <div class="state-content">
+        <h2>Mizoram</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🌿</div>
+      <div class="state-content">
+        <h2>Tripura</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Central India -->
+  <section class="states-section" *ngIf="region === 'central'">
+
+    <div class="state-card">
+      <div class="state-image">🏞️</div>
+      <div class="state-content">
+        <h2>Madhya Pradesh</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+    <div class="state-card">
+      <div class="state-image">🌳</div>
+      <div class="state-content">
+        <h2>Chhattisgarh</h2>
+        <a [routerLink]="['/recipes']">View Recipes</a>
+      </div>
+    </div>
+
+  </section>
+
+</div>
