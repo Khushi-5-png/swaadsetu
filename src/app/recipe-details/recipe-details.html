@@ -1,33 +1,45 @@
 <div class="details-page">
 
+  <!-- HEADER -->
   <header class="site-header">
 
     <div class="site-logo">
       SwaadSetu <span>🍛</span>
     </div>
 
-    <a href="/explore" class="home-link">
+    <a
+      routerLink="/explore"
+      class="home-link"
+    >
       Explore India
     </a>
 
   </header>
 
 
+  <!-- BREADCRUMB -->
   <div class="breadcrumb">
 
-    <a href="/explore">Explore</a>
+    <a routerLink="/explore">
+      Explore
+    </a>
 
     <span>›</span>
 
-    <span>{{ recipeData.state }}</span>
+    <span>
+      {{ recipeData.state }}
+    </span>
 
     <span>›</span>
 
-    <span>{{ recipeData.name }}</span>
+    <span>
+      {{ recipeData.name }}
+    </span>
 
   </div>
 
 
+  <!-- HERO -->
   <section class="recipe-hero">
 
     <div class="recipe-visual">
@@ -46,11 +58,9 @@
     <div class="recipe-intro">
 
       <span class="recipe-region">
-
         {{ recipeData.state | uppercase }}
         •
         {{ recipeData.category | uppercase }}
-
       </span>
 
 
@@ -59,8 +69,15 @@
       </h1>
 
 
-      <div class="odia-name">
-        {{ recipeData.odiaName }}
+      <!-- REGIONAL NAME -->
+      <div class="native-name">
+        {{ recipeData.nativeName }}
+      </div>
+
+
+      <!-- LANGUAGE -->
+      <div class="language-label">
+        {{ recipeData.language }} • Regional Name
       </div>
 
 
@@ -69,6 +86,7 @@
       </p>
 
 
+      <!-- META -->
       <div class="recipe-meta">
 
         <div class="meta-item">
@@ -129,9 +147,11 @@
   </section>
 
 
+  <!-- MAIN CONTENT -->
   <main class="recipe-content">
 
 
+    <!-- ABOUT -->
     <section class="content-section">
 
       <h2>
@@ -145,6 +165,7 @@
     </section>
 
 
+    <!-- STORY -->
     <section class="content-section">
 
       <h2>
@@ -158,6 +179,7 @@
     </section>
 
 
+    <!-- INGREDIENTS -->
     <section class="content-section">
 
       <h2>
@@ -209,6 +231,7 @@
     </section>
 
 
+    <!-- PREPARATION -->
     <section class="content-section">
 
       <h2>
@@ -243,6 +266,7 @@
     </section>
 
 
+    <!-- SERVING -->
     <section class="content-section">
 
       <h2>
@@ -256,6 +280,7 @@
     </section>
 
 
+    <!-- CHEF TIP -->
     <section class="chef-tip">
 
       <div class="tip-icon">
@@ -278,26 +303,35 @@
     </section>
 
 
-    <section class="odia-closing">
+    <!-- REGIONAL FOOD CAPTION -->
+    <section class="regional-caption">
 
-      <div class="odia-symbol">
-        ଓ
+      <div class="caption-icon">
+        ✨
       </div>
 
 
+      <span class="caption-label">
+        A TASTE OF {{ recipeData.state | uppercase }}
+      </span>
+
+
+      <!-- STATE-SPECIFIC REGIONAL LANGUAGE -->
       <h2>
-        ଓଡ଼ିଆ ସ୍ୱାଦର ପରିଚୟ
+        {{ recipeData.nativeCaption }}
       </h2>
 
 
-      <p>
-        {{ recipeData.odiaMessage }}
+      <!-- ENGLISH TRANSLATION -->
+      <p class="caption-translation">
+        "{{ recipeData.englishCaption }}"
       </p>
 
 
-      <span>
-        A taste of India, preserved through tradition.
-      </span>
+      <!-- LANGUAGE NAME -->
+      <div class="caption-language">
+        {{ recipeData.language }}
+      </div>
 
     </section>
 
@@ -305,6 +339,7 @@
   </main>
 
 
+  <!-- FOOTER -->
   <footer class="site-footer">
 
     <strong>

@@ -1,30 +1,36 @@
 import { Component } from '@angular/core';
-import { UpperCasePipe } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 interface Recipe {
   name: string;
-  odiaName: string;
+  nativeName: string;
   state: string;
+  language: string;
   category: string;
   type: string;
   time: string;
   serves: string;
   difficulty: string;
+
   description: string;
   about: string;
   story: string;
+
   ingredients: string[];
   masala: string[];
   preparation: string[];
+
   serving: string;
   chefTip: string;
-  odiaMessage: string;
+
+  nativeCaption: string;
+  englishCaption: string;
 }
 
 @Component({
   selector: 'app-recipe-details',
-  imports: [UpperCasePipe],
+  imports: [CommonModule, RouterLink],
   templateUrl: './recipe-details.html',
   styleUrl: './recipe-details.css'
 })
@@ -32,788 +38,8 @@ export class RecipeDetails {
 
   recipe = '';
 
-  recipeData: Recipe = {
-    name: 'Dalma',
-    odiaName: 'ଡାଲମା',
-    state: 'Odisha',
-    category: 'Traditional Cuisine',
-    type: 'Vegetarian',
-    time: '40 min',
-    serves: '4',
-    difficulty: 'Easy',
+  recipeData!: Recipe;
 
-    description:
-      'Dalma is a traditional Odia dish made with lentils, vegetables and aromatic spices. It is commonly enjoyed with rice.',
-
-    about:
-      'Dalma is a comforting Odia preparation where lentils are cooked together with seasonal vegetables and traditional spices.',
-
-    story:
-      'Dalma reflects the simple and wholesome character of traditional Odia cooking. Different households may use different seasonal vegetables and spice combinations.',
-
-    ingredients: [
-      'Toor dal – 1 cup',
-      'Potato – 1 medium',
-      'Pumpkin – 1 cup',
-      'Raw papaya – 1 cup',
-      'Raw banana – 1',
-      'Brinjal – 1 small',
-      'Tomato – 1'
-    ],
-
-    masala: [
-      'Turmeric powder – ½ teaspoon',
-      'Roasted cumin powder – 1 teaspoon',
-      'Red chilli powder – ½ teaspoon',
-      'Ginger paste – 1 teaspoon',
-      'Pancha Phutana – 1 teaspoon',
-      'Salt – as required',
-      'Cooking oil – 1–2 tablespoons'
-    ],
-
-    preparation: [
-      'Wash the toor dal thoroughly and cook it until soft.',
-      'Wash and cut the vegetables into medium-sized pieces.',
-      'Cook the vegetables with turmeric and salt until tender.',
-      'Add the cooked dal to the vegetables and mix well.',
-      'Add ginger paste, roasted cumin powder and red chilli powder.',
-      'Heat oil and add pancha phutana for tempering.',
-      'Add the tempering to the dal and vegetable mixture.',
-      'Simmer for a few minutes so the flavours combine.',
-      'Serve hot with steamed rice.'
-    ],
-
-    serving:
-      'Dalma is traditionally served hot with steamed rice and simple Odia accompaniments.',
-
-    chefTip:
-      'For a richer traditional flavour, lightly roast cumin seeds and dry red chillies, grind them into a powder and add a small amount just before serving.',
-
-    odiaMessage:
-      'ଓଡ଼ିଆ ଘରର ସରଳତା ଓ ସ୍ୱାଦରେ ଡାଲମାର ଏକ ନିଆରା ପରିଚୟ ରହିଛି।'
-  };
-
-  pakhalaData: Recipe = {
-    name: 'Pakhala Bhata',
-    odiaName: 'ପଖାଳ ଭାତ',
-    state: 'Odisha',
-    category: 'Traditional Cuisine',
-    type: 'Vegetarian',
-    time: '15 min + soaking',
-    serves: '2',
-    difficulty: 'Easy',
-
-    description:
-      'Pakhala Bhata is a traditional Odia fermented rice dish made by soaking cooked rice in water and allowing it to develop a naturally tangy flavour.',
-
-    about:
-      'Pakhala Bhata is one of the most loved traditional foods of Odisha. It is especially popular during the hot summer months because it is light, refreshing and cooling.',
-
-    story:
-      'Pakhala is deeply connected with everyday Odia food culture. Families often enjoy it with simple accompaniments such as fried vegetables, green chillies, saga bhaja, badi or fish.',
-
-    ingredients: [
-      'Cooked rice – 2 cups',
-      'Water – 2 to 3 cups',
-      'Curd – 2 tablespoons',
-      'Salt – as required'
-    ],
-
-    masala: [
-      'Roasted cumin powder – ½ teaspoon',
-      'Green chilli – 1 or 2',
-      'Fresh coriander – a small amount',
-      'Ginger – finely chopped, optional'
-    ],
-
-    preparation: [
-      'Place freshly cooked rice in a clean bowl and allow it to cool.',
-      'Add water and gently mix the rice.',
-      'Add curd and salt and mix well.',
-      'Cover the bowl and allow the rice to rest for several hours or overnight for a stronger fermented flavour.',
-      'Before serving, add roasted cumin powder and chopped green chilli.',
-      'Serve chilled or at room temperature with traditional Odia side dishes.'
-    ],
-
-    serving:
-      'Pakhala Bhata is traditionally served with fried vegetables, saga bhaja, badi, green chilli and other simple Odia accompaniments.',
-
-    chefTip:
-      'For a more traditional fermented flavour, prepare the pakhala a few hours in advance and let it rest overnight in a cool place.',
-
-    odiaMessage:
-      'ପଖାଳ ଭାତ ଓଡ଼ିଆ ଘରର ପରମ୍ପରା, ସରଳତା ଓ ଆପଣାପଣିଆ ସ୍ୱାଦର ଏକ ସୁନ୍ଦର ପରିଚୟ।'
-  };
-
-  dahiPakhalaData: Recipe = {
-    name: 'Dahi Pakhala',
-    odiaName: 'ଦହି ପଖାଳ',
-    state: 'Odisha',
-    category: 'Traditional Cuisine',
-    type: 'Vegetarian',
-    time: '15 min + soaking',
-    serves: '2',
-    difficulty: 'Easy',
-
-    description:
-      'Dahi Pakhala is a refreshing Odia preparation made with cooked rice, water and curd, creating a creamy and mildly tangy traditional meal.',
-
-    about:
-      'Dahi Pakhala is a variation of Pakhala Bhata where curd adds a smooth, cooling and mildly sour flavour to the fermented rice.',
-
-    story:
-      'Dahi Pakhala is enjoyed as a simple traditional meal in Odisha, especially during warm weather. It is often paired with fried vegetables, saga bhaja, badi and green chillies.',
-
-    ingredients: [
-      'Cooked rice – 2 cups',
-      'Water – 2 cups',
-      'Fresh curd – ½ cup',
-      'Salt – as required'
-    ],
-
-    masala: [
-      'Roasted cumin powder – ½ teaspoon',
-      'Green chilli – 1 or 2',
-      'Fresh coriander – a small amount',
-      'Ginger – finely chopped, optional'
-    ],
-
-    preparation: [
-      'Allow freshly cooked rice to cool completely.',
-      'Place the rice in a clean bowl and add water.',
-      'Add fresh curd and gently mix everything together.',
-      'Add salt according to taste.',
-      'Allow the mixture to rest for a few hours for the flavours to develop.',
-      'Add roasted cumin powder and chopped green chilli before serving.',
-      'Serve chilled or at room temperature with traditional Odia accompaniments.'
-    ],
-
-    serving:
-      'Dahi Pakhala is traditionally served with fried vegetables, saga bhaja, badi, green chilli and other simple Odia side dishes.',
-
-    chefTip:
-      'Use fresh curd for a smooth and refreshing taste. Adjust the amount of water according to how thin or thick you prefer the pakhala.',
-
-    odiaMessage:
-      'ଦହି ପଖାଳ ଓଡ଼ିଆ ଖାଦ୍ୟ ପରମ୍ପରାର ଏକ ସରଳ, ଶୀତଳ ଓ ସୁସ୍ୱାଦୁ ପରିଚୟ।'
-  };
-
-  masorTengaData: Recipe = {
-    name: 'Masor Tenga',
-    odiaName: 'মাছৰ টেঙা',
-    state: 'Assam',
-    category: 'Traditional Assamese Cuisine',
-    type: 'Non-Vegetarian',
-    time: '35 min',
-    serves: '4',
-    difficulty: 'Easy',
-
-    description:
-      'Masor Tenga is a traditional Assamese light and tangy fish curry prepared with fish and souring ingredients.',
-
-    about:
-      'Masor Tenga is a well-known Assamese fish preparation valued for its light texture and refreshing sour flavour. It is commonly enjoyed with steamed rice.',
-
-    story:
-      'Masor Tenga reflects the simple and balanced character of Assamese home cooking. Different households may use ingredients such as tomato, elephant apple or other local souring ingredients.',
-
-    ingredients: [
-      'Fresh fish – 500 g',
-      'Tomato – 2 medium',
-      'Potato – 1 medium',
-      'Mustard oil – 2 tablespoons',
-      'Water – as required',
-      'Salt – as required'
-    ],
-
-    masala: [
-      'Turmeric powder – ½ teaspoon',
-      'Green chilli – 2',
-      'Ginger paste – 1 teaspoon',
-      'Cumin powder – ½ teaspoon',
-      'Fresh coriander – a small amount'
-    ],
-
-    preparation: [
-      'Clean the fish pieces and season them with salt and turmeric.',
-      'Heat mustard oil in a pan and lightly fry the fish pieces.',
-      'Remove the fish and keep it aside.',
-      'In the same pan, add ginger paste and sliced tomatoes.',
-      'Cook until the tomatoes become soft.',
-      'Add turmeric, cumin powder and green chillies.',
-      'Add water and bring the curry to a gentle boil.',
-      'Add the fried fish pieces and cook for several minutes.',
-      'Adjust the salt and sourness according to taste.',
-      'Garnish with fresh coriander and serve hot with rice.'
-    ],
-
-    serving:
-      'Masor Tenga is traditionally served with steamed rice as a light and refreshing Assamese meal.',
-
-    chefTip:
-      'The defining character of Masor Tenga is its gentle sourness, so add the souring ingredient gradually and adjust it according to taste.',
-
-    odiaMessage:
-      'অসমীয়া খাদ্য পৰম্পৰাৰ সৰলতা আৰু টেঙা সোৱাদৰ এক সুন্দৰ পৰিচয় হৈছে মাছৰ টেঙা।'
-  };
-
-  kharData: Recipe = {
-    name: 'Khar',
-    odiaName: 'খাৰ',
-    state: 'Assam',
-    category: 'Traditional Assamese Cuisine',
-    type: 'Vegetarian',
-    time: '30 min',
-    serves: '4',
-    difficulty: 'Easy',
-
-    description:
-      'Khar is a traditional Assamese preparation known for its distinctive alkaline flavour and simple combination of vegetables and raw papaya.',
-
-    about:
-      'Khar is an important part of traditional Assamese cuisine. It is commonly prepared using raw papaya and an alkaline ingredient traditionally made from filtered ash water.',
-
-    story:
-      'Khar represents the unique cooking traditions of Assam, where simple local ingredients are transformed into dishes with distinctive flavours and textures.',
-
-    ingredients: [
-      'Raw papaya – 2 cups',
-      'Khar water – 2 tablespoons',
-      'Water – 2 cups',
-      'Mustard oil – 1 tablespoon',
-      'Salt – as required'
-    ],
-
-    masala: [
-      'Turmeric powder – ¼ teaspoon',
-      'Green chilli – 2',
-      'Ginger paste – 1 teaspoon',
-      'Mustard seeds – ½ teaspoon',
-      'Fresh coriander – a small amount'
-    ],
-
-    preparation: [
-      'Peel and cut the raw papaya into medium-sized pieces.',
-      'Wash the papaya pieces thoroughly.',
-      'Heat mustard oil in a pan.',
-      'Add mustard seeds and green chillies.',
-      'Add ginger paste and cook briefly.',
-      'Add the raw papaya pieces and mix well.',
-      'Add water and cook until the papaya becomes tender.',
-      'Add the traditional khar water and mix gently.',
-      'Simmer for a few minutes so the flavours combine.',
-      'Adjust the salt and serve warm with steamed rice.'
-    ],
-
-    serving:
-      'Khar is traditionally served with steamed rice as part of a simple Assamese meal.',
-
-    chefTip:
-      'Khar has a distinctive alkaline taste, so the amount of khar water should be adjusted carefully according to the desired flavour.',
-
-    odiaMessage:
-      'অসমীয়া খাদ্য পৰম্পৰাৰ এক অনন্য আৰু পৰম্পৰাগত সোৱাদৰ পৰিচয় হৈছে খাৰ।'
-  };
-
-  sarsonSaagData: Recipe = {
-    name: 'Sarson da Saag',
-    odiaName: 'सरसों दा साग',
-    state: 'Punjab',
-    category: 'Traditional Punjabi Cuisine',
-    type: 'Vegetarian',
-    time: '50 min',
-    serves: '4',
-    difficulty: 'Medium',
-
-    description:
-      'Sarson da Saag is a traditional Punjabi preparation made from mustard greens and other leafy vegetables, cooked with aromatic spices.',
-
-    about:
-      'Sarson da Saag is one of the most recognizable dishes of Punjabi cuisine. It is traditionally prepared by slow-cooking mustard greens with other seasonal greens and spices.',
-
-    story:
-      'Sarson da Saag is closely associated with Punjabi winter food traditions and is commonly enjoyed as a hearty homemade meal with makki di roti.',
-
-    ingredients: [
-      'Mustard greens – 500 g',
-      'Spinach – 250 g',
-      'Bathua greens – 150 g',
-      'Onion – 1 medium',
-      'Tomato – 1 medium',
-      'Ginger – 1 teaspoon',
-      'Garlic – 4 cloves'
-    ],
-
-    masala: [
-      'Turmeric powder – ½ teaspoon',
-      'Red chilli powder – ½ teaspoon',
-      'Garam masala – ½ teaspoon',
-      'Green chilli – 1 or 2',
-      'Salt – as required',
-      'Ghee or butter – 1 tablespoon'
-    ],
-
-    preparation: [
-      'Wash the mustard greens, spinach and bathua thoroughly.',
-      'Chop all the greens into smaller pieces.',
-      'Cook the greens with a little water until they become soft.',
-      'Allow the cooked greens to cool slightly and blend them into a coarse paste.',
-      'Heat ghee or butter in a pan.',
-      'Add chopped onion, ginger and garlic and cook until lightly golden.',
-      'Add chopped tomato and cook until soft.',
-      'Add turmeric, red chilli powder and salt.',
-      'Add the blended greens and mix everything together.',
-      'Simmer on low heat for 15–20 minutes.',
-      'Add garam masala and adjust the seasoning before serving.'
-    ],
-
-    serving:
-      'Sarson da Saag is traditionally served hot with makki di roti, butter or ghee and simple Punjabi accompaniments.',
-
-    chefTip:
-      'Slow cooking the greens allows their flavours to develop. A small amount of ghee or butter added before serving gives the dish a richer traditional taste.',
-
-    odiaMessage:
-      'ପଞ୍ଜାବୀ ଖାଦ୍ୟ ପରମ୍ପରାର ସରଳତା, ଗାଢ଼ ସ୍ୱାଦ ଓ ଘରୋଇ ଆତ୍ମୀୟତାର ଏକ ପରିଚୟ ହେଉଛି ସରସୋଁ ଦା ସାଗ।'
-  };
-
-  dalBaatiChurmaData: Recipe = {
-    name: 'Dal Baati Churma',
-    odiaName: 'दाल बाटी चूरमा',
-    state: 'Rajasthan',
-    category: 'Traditional Rajasthani Cuisine',
-    type: 'Vegetarian',
-    time: '1 hr 15 min',
-    serves: '4',
-    difficulty: 'Medium',
-
-    description:
-      'Dal Baati Churma is a traditional Rajasthani meal combining baked wheat baati, flavorful dal and sweet churma.',
-
-    about:
-      'Dal Baati Churma is a classic dish of Rajasthan made with three distinct elements: baati, a baked wheat preparation; dal, a lentil curry; and churma, a sweet preparation made from crushed baati.',
-
-    story:
-      'The dish reflects the rich culinary traditions of Rajasthan, where hearty ingredients and long-lasting preparations developed alongside the region’s dry climate and royal food culture.',
-
-    ingredients: [
-      'Wheat flour – 2 cups',
-      'Semolina – 2 tablespoons',
-      'Toor dal – ½ cup',
-      'Moong dal – ½ cup',
-      'Chana dal – ½ cup',
-      'Ghee – 4 tablespoons',
-      'Jaggery or sugar – ½ cup',
-      'Water – as required',
-      'Salt – as required'
-    ],
-
-    masala: [
-      'Turmeric powder – ½ teaspoon',
-      'Red chilli powder – ½ teaspoon',
-      'Cumin seeds – 1 teaspoon',
-      'Coriander powder – 1 teaspoon',
-      'Garam masala – ½ teaspoon',
-      'Ginger – 1 teaspoon',
-      'Green chilli – 1 or 2'
-    ],
-
-    preparation: [
-      'Combine wheat flour, semolina, salt and a little ghee to prepare the baati dough.',
-      'Add water gradually and knead into a firm dough.',
-      'Divide the dough into equal portions and shape them into round balls.',
-      'Bake the baati until golden and cooked through.',
-      'Wash the different dals and pressure cook them with turmeric and salt until soft.',
-      'Prepare a tempering with ghee, cumin seeds, ginger, green chilli and spices.',
-      'Add the tempering to the cooked dal and simmer for a few minutes.',
-      'For churma, crush some cooked baati into coarse crumbs.',
-      'Mix the crumbs with ghee and jaggery or sugar.',
-      'Serve the baati with hot dal and sweet churma, topped with ghee.'
-    ],
-
-    serving:
-      'Dal Baati Churma is traditionally served hot with generous amounts of ghee, dal and sweet churma.',
-
-    chefTip:
-      'Dip the hot baati in ghee before serving. The combination of crisp baati, flavorful dal and sweet churma creates the traditional balance of textures and flavours.',
-
-    odiaMessage:
-      'ରାଜସ୍ଥାନୀ ଖାଦ୍ୟ ପରମ୍ପରାର ସମୃଦ୍ଧ ସ୍ୱାଦ ଓ ଆତିଥ୍ୟର ଏକ ପ୍ରସିଦ୍ଧ ପରିଚୟ ହେଉଛି ଦାଲ ବାଟି ଚୂର୍ମା।'
-  };
-
-  macherJholData: Recipe = {
-    name: 'Macher Jhol',
-    odiaName: 'মাছের ঝোল',
-    state: 'West Bengal',
-    category: 'Traditional Bengali Cuisine',
-    type: 'Non-Vegetarian',
-    time: '40 min',
-    serves: '4',
-    difficulty: 'Easy',
-
-    description:
-      'Macher Jhol is a traditional Bengali fish curry made with fresh fish, potatoes and light aromatic spices.',
-
-    about:
-      'Macher Jhol is a simple and comforting Bengali fish preparation. It is usually light, mildly spiced and commonly served with steamed rice.',
-
-    story:
-      'The dish represents the everyday style of Bengali home cooking, where fresh fish, seasonal vegetables and simple spices are combined to create a comforting meal.',
-
-    ingredients: [
-      'Fresh fish – 500 g',
-      'Potatoes – 2 medium',
-      'Tomato – 1 medium',
-      'Mustard oil – 3 tablespoons',
-      'Water – as required',
-      'Salt – as required'
-    ],
-
-    masala: [
-      'Turmeric powder – 1 teaspoon',
-      'Red chilli powder – ½ teaspoon',
-      'Cumin powder – 1 teaspoon',
-      'Ginger paste – 1 teaspoon',
-      'Cumin seeds – ½ teaspoon',
-      'Green chilli – 2'
-    ],
-
-    preparation: [
-      'Clean the fish pieces and season them with salt and turmeric.',
-      'Heat mustard oil in a pan and lightly fry the fish pieces until golden.',
-      'Remove the fish and keep it aside.',
-      'Cut the potatoes into medium-sized pieces and lightly fry them in the same pan.',
-      'Add cumin seeds and ginger paste to the pan.',
-      'Add chopped tomato, turmeric, chilli powder and cumin powder.',
-      'Cook until the tomato becomes soft and the spices are fragrant.',
-      'Add water and bring the curry to a gentle boil.',
-      'Add the fried potatoes and cook until they become tender.',
-      'Add the fried fish pieces and simmer for a few minutes.',
-      'Add green chillies and adjust the salt.',
-      'Serve hot with steamed rice.'
-    ],
-
-    serving:
-      'Macher Jhol is traditionally served hot with steamed white rice.',
-
-    chefTip:
-      'Use fresh fish and mustard oil for a more traditional Bengali flavour. Keep the gravy light rather than making it too thick.',
-
-    odiaMessage:
-      'ବଙ୍ଗୀୟ ଖାଦ୍ୟ ପରମ୍ପରାର ସରଳତା ଓ ସ୍ୱାଦର ଏକ ପରିଚିତ ଉଦାହରଣ ହେଉଛି ମାଛେର ଝୋଲ।'
-  };
-
-  dhuskaData: Recipe = {
-    name: 'Dhuska',
-    odiaName: 'ଧୁସ୍କା',
-    state: 'Jharkhand',
-    category: 'Traditional Jharkhand Cuisine',
-    type: 'Vegetarian',
-    time: '45 min',
-    serves: '4',
-    difficulty: 'Easy',
-
-    description:
-      'Dhuska is a popular Jharkhand dish made from fermented rice and lentils, shaped into small fritters and fried until golden.',
-
-    about:
-      'Dhuska is a traditional Jharkhand preparation made primarily from rice and lentils. It is crispy outside, soft inside and commonly enjoyed with a spicy potato or vegetable curry.',
-
-    story:
-      'Dhuska is part of the traditional food culture of Jharkhand and is commonly prepared during festivals, family occasions and everyday meals.',
-
-    ingredients: [
-      'Rice – 1 cup',
-      'Chana dal – ½ cup',
-      'Urad dal – ¼ cup',
-      'Green chilli – 2',
-      'Ginger – 1 teaspoon',
-      'Water – as required',
-      'Salt – as required',
-      'Cooking oil – for frying'
-    ],
-
-    masala: [
-      'Cumin seeds – 1 teaspoon',
-      'Turmeric powder – ¼ teaspoon',
-      'Red chilli powder – ½ teaspoon',
-      'Coriander leaves – a small amount',
-      'Asafoetida – a pinch'
-    ],
-
-    preparation: [
-      'Wash the rice, chana dal and urad dal thoroughly.',
-      'Soak them in water for several hours.',
-      'Drain the water and grind the soaked ingredients into a slightly coarse batter.',
-      'Add ginger, green chilli, cumin seeds, turmeric, salt and coriander leaves.',
-      'Allow the batter to rest for a few hours for fermentation.',
-      'Heat oil in a deep pan over medium heat.',
-      'Take small portions of batter and carefully drop them into the hot oil.',
-      'Fry until the dhuska becomes golden and crisp on the outside.',
-      'Remove and drain on a kitchen towel.',
-      'Serve hot with potato curry or another spicy vegetable preparation.'
-    ],
-
-    serving:
-      'Dhuska is traditionally served hot with spicy potato curry or vegetable curry.',
-
-    chefTip:
-      'Keep the batter slightly thick so the dhuska holds its shape while frying. Fermenting the batter also gives it a better texture and flavour.',
-
-    odiaMessage:
-      'ଝାରଖଣ୍ଡର ପାରମ୍ପରିକ ଖାଦ୍ୟ ସଂସ୍କୃତିର ଏକ ସରଳ ଓ ସ୍ୱାଦିଷ୍ଟ ପରିଚୟ ହେଉଛି ଧୁସ୍କା।'
-  };
-
-  pongalData: Recipe = {
-    name: 'Pongal',
-    odiaName: 'பொங்கல்',
-    state: 'Tamil Nadu',
-    category: 'Traditional Tamil Cuisine',
-    type: 'Vegetarian',
-    time: '35 min',
-    serves: '4',
-    difficulty: 'Easy',
-
-    description:
-      'Pongal is a traditional South Indian rice and lentil dish cooked with ghee, pepper, cumin and aromatic spices.',
-
-    about:
-      'Pongal is a comforting Tamil dish made by cooking rice and moong dal together until soft and creamy. It is commonly enjoyed as breakfast or as part of festive meals.',
-
-    story:
-      'Pongal is closely associated with Tamil food culture and the harvest festival of the same name. Its simple ingredients and comforting texture make it a popular traditional dish.',
-
-    ingredients: [
-      'Rice – 1 cup',
-      'Moong dal – ½ cup',
-      'Ghee – 2 tablespoons',
-      'Water – 4 cups',
-      'Cashews – 10',
-      'Ginger – 1 teaspoon',
-      'Salt – as required'
-    ],
-
-    masala: [
-      'Black pepper – 1 teaspoon',
-      'Cumin seeds – 1 teaspoon',
-      'Curry leaves – a few',
-      'Green chilli – 1',
-      'Asafoetida – a pinch'
-    ],
-
-    preparation: [
-      'Wash the rice and moong dal thoroughly.',
-      'Lightly roast the moong dal until it becomes aromatic.',
-      'Add rice and roasted dal to a pressure cooker.',
-      'Add water and salt and cook until soft and creamy.',
-      'Heat ghee in a separate pan.',
-      'Add cumin seeds, black pepper, curry leaves, green chilli and asafoetida.',
-      'Add cashews and fry until lightly golden.',
-      'Pour the tempering over the cooked rice and dal.',
-      'Mix everything thoroughly and simmer for a few minutes.',
-      'Serve hot with chutney or sambar.'
-    ],
-
-    serving:
-      'Pongal is traditionally served hot with coconut chutney, sambar and a little extra ghee.',
-
-    chefTip:
-      'For creamy Pongal, cook the rice and dal until they become very soft. Freshly ground pepper and cumin give the dish a stronger traditional aroma.',
-
-    odiaMessage:
-      'ତାମିଲ ଖାଦ୍ୟ ପରମ୍ପରାର ସରଳତା ଓ ସୁଗନ୍ଧିତ ସ୍ୱାଦର ଏକ ପରିଚିତ ଉଦାହରଣ ହେଉଛି ପୋଙ୍ଗଲ।'
-  };
-
-  avialData: Recipe = {
-    name: 'Avial',
-    odiaName: 'അവിയൽ',
-    state: 'Kerala',
-    category: 'Traditional Kerala Cuisine',
-    type: 'Vegetarian',
-    time: '40 min',
-    serves: '4',
-    difficulty: 'Easy',
-
-    description:
-      'Avial is a traditional Kerala preparation made with mixed vegetables, coconut and curd, gently cooked with aromatic spices.',
-
-    about:
-      'Avial is a classic Kerala dish made using a variety of seasonal vegetables. It has a mild, creamy and coconut-rich flavour and is commonly served with rice.',
-
-    story:
-      'Avial is an important part of Kerala food traditions and is commonly associated with festive meals and the traditional Sadya served on banana leaves.',
-
-    ingredients: [
-      'Raw banana – 1',
-      'Carrot – 1',
-      'Drumstick – 1',
-      'Ash gourd – 1 cup',
-      'Beans – ½ cup',
-      'Yam – 1 cup',
-      'Curd – ½ cup',
-      'Grated coconut – 1 cup'
-    ],
-
-    masala: [
-      'Green chilli – 2',
-      'Cumin seeds – 1 teaspoon',
-      'Turmeric powder – ¼ teaspoon',
-      'Curry leaves – a few',
-      'Coconut oil – 1 tablespoon',
-      'Salt – as required'
-    ],
-
-    preparation: [
-      'Wash, peel and cut the vegetables into long, even pieces.',
-      'Cook the vegetables with turmeric, salt and a little water.',
-      'Grind grated coconut, green chilli and cumin seeds into a coarse paste.',
-      'Add the coconut mixture to the cooked vegetables.',
-      'Mix gently and cook for a few minutes.',
-      'Lower the heat and add beaten curd.',
-      'Mix carefully without boiling the curd.',
-      'Add fresh curry leaves and coconut oil.',
-      'Allow the flavours to combine for a few minutes.',
-      'Serve warm with steamed rice.'
-    ],
-
-    serving:
-      'Avial is traditionally served with steamed rice and is an important part of the Kerala Sadya.',
-
-    chefTip:
-      'Do not overcook the vegetables. They should remain slightly firm so the dish keeps its traditional texture.',
-
-    odiaMessage:
-      'କେରଳର ପାରମ୍ପରିକ ଖାଦ୍ୟ ସଂସ୍କୃତିର ସରଳତା ଓ ନଡ଼ିଆର ସୁଗନ୍ଧର ଏକ ସୁନ୍ଦର ପରିଚୟ ହେଉଛି ଅଭିୟଲ।'
-  };
-
-  bisiBeleBathData: Recipe = {
-    name: 'Bisi Bele Bath',
-    odiaName: 'ಬಿಸಿ ಬೇಳೆ ಬಾತ್',
-    state: 'Karnataka',
-    category: 'Traditional Karnataka Cuisine',
-    type: 'Vegetarian',
-    time: '50 min',
-    serves: '4',
-    difficulty: 'Medium',
-
-    description:
-      'Bisi Bele Bath is a traditional Karnataka rice and lentil dish prepared with vegetables, tamarind and aromatic spices.',
-
-    about:
-      'Bisi Bele Bath is a wholesome one-pot meal made with rice, lentils and vegetables. Its distinctive flavour comes from roasted spices and tamarind.',
-
-    story:
-      'The dish is deeply associated with Karnataka cuisine and is commonly served at homes, restaurants and traditional meals across the state.',
-
-    ingredients: [
-      'Rice – 1 cup',
-      'Toor dal – ½ cup',
-      'Carrot – 1',
-      'Beans – ½ cup',
-      'Potato – 1',
-      'Peas – ½ cup',
-      'Tamarind – 1 tablespoon',
-      'Water – as required',
-      'Salt – as required'
-    ],
-
-    masala: [
-      'Bisi Bele Bath powder – 2 tablespoons',
-      'Turmeric powder – ½ teaspoon',
-      'Mustard seeds – 1 teaspoon',
-      'Cumin seeds – ½ teaspoon',
-      'Curry leaves – a few',
-      'Dry red chilli – 2',
-      'Ghee – 1 tablespoon'
-    ],
-
-    preparation: [
-      'Wash the rice and toor dal thoroughly.',
-      'Cut the vegetables into small pieces.',
-      'Cook the rice and dal together until soft.',
-      'Cook the vegetables separately until tender.',
-      'Prepare tamarind water and keep it aside.',
-      'Prepare the tempering with ghee, mustard seeds, cumin seeds, dry red chilli and curry leaves.',
-      'Add the cooked vegetables and tamarind water.',
-      'Add turmeric and Bisi Bele Bath powder and mix well.',
-      'Add the cooked rice and dal to the mixture.',
-      'Add water as needed and simmer until soft.',
-      'Adjust salt and serve hot.'
-    ],
-
-    serving:
-      'Bisi Bele Bath is traditionally served hot with boondi, papad, pickle or a little ghee.',
-
-    chefTip:
-      'Cook the rice and dal until very soft for the traditional texture. Add tamarind gradually to balance the spicy and tangy flavours.',
-
-    odiaMessage:
-      'କର୍ଣ୍ଣାଟକର ପାରମ୍ପରିକ ଖାଦ୍ୟର ସୁଗନ୍ଧିତ ମସଲା ଓ ସମୃଦ୍ଧ ସ୍ୱାଦର ଏକ ପରିଚିତ ପରିଚୟ ହେଉଛି ବିସି ବେଲେ ବାଥ।'
-  };
-
-  misalPavData: Recipe = {
-    name: 'Misal Pav',
-    odiaName: 'मिसळ पाव',
-    state: 'Maharashtra',
-    category: 'Traditional Maharashtrian Cuisine',
-    type: 'Vegetarian',
-    time: '45 min',
-    serves: '4',
-    difficulty: 'Medium',
-
-    description:
-      'Misal Pav is a popular Maharashtrian dish made with spicy sprouted lentils, flavorful gravy, farsan and soft pav.',
-
-    about:
-      'Misal Pav is a well-known street food and breakfast dish from Maharashtra. It combines a spicy sprouted-lentil curry with crunchy farsan, onions, coriander and pav.',
-
-    story:
-      'Misal has become an important part of Maharashtra’s food culture, with different regions preparing it with their own level of spice and style.',
-
-    ingredients: [
-      'Mixed sprouts – 2 cups',
-      'Onion – 1 large',
-      'Tomato – 2 medium',
-      'Potato – 1 medium',
-      'Pav – 8',
-      'Farsan – 1 cup',
-      'Water – as required',
-      'Salt – as required'
-    ],
-
-    masala: [
-      'Misal masala – 2 tablespoons',
-      'Red chilli powder – 1 teaspoon',
-      'Turmeric powder – ½ teaspoon',
-      'Cumin seeds – 1 teaspoon',
-      'Mustard seeds – ½ teaspoon',
-      'Ginger-garlic paste – 1 teaspoon',
-      'Coriander leaves – a small amount'
-    ],
-
-    preparation: [
-      'Wash the mixed sprouts and cook them until tender.',
-      'Heat oil in a pan and add mustard seeds and cumin seeds.',
-      'Add chopped onion and cook until lightly golden.',
-      'Add ginger-garlic paste and cook for a minute.',
-      'Add chopped tomatoes and cook until soft.',
-      'Add turmeric, red chilli powder and misal masala.',
-      'Add the cooked sprouts and potato.',
-      'Add water and simmer the mixture until the gravy becomes flavorful.',
-      'Adjust salt and spice according to taste.',
-      'Serve the misal topped with farsan, chopped onion and coriander.',
-      'Serve hot with pav.'
-    ],
-
-    serving:
-      'Misal Pav is traditionally served hot with pav, farsan, chopped onions, coriander and lemon.',
-
-    chefTip:
-      'For authentic flavour, keep the gravy spicy and serve the farsan separately or add it just before eating so it remains crunchy.',
-
-    odiaMessage:
-      'ମହାରାଷ୍ଟ୍ରର ଲୋକପ୍ରିୟ ଓ ମସଲାଦାର ଖାଦ୍ୟ ପରମ୍ପରାର ଏକ ପରିଚିତ ପରିଚୟ ହେଉଛି ମିସଲ ପାଉ।'
-  };
 
   constructor(private route: ActivatedRoute) {
 
@@ -821,45 +47,1819 @@ export class RecipeDetails {
 
       this.recipe = params['recipe'] || '';
 
-      if (this.recipe === 'Pakhala Bhata') {
-        this.recipeData = this.pakhalaData;
+      switch (this.recipe) {
 
-      } else if (this.recipe === 'Dahi Pakhala') {
-        this.recipeData = this.dahiPakhalaData;
+        case 'Dalma':
+          this.recipeData = this.dalmaData;
+          break;
 
-      } else if (this.recipe === 'Masor Tenga') {
-        this.recipeData = this.masorTengaData;
+        case 'Pakhala Bhata':
+          this.recipeData = this.pakhalaData;
+          break;
 
-      } else if (this.recipe === 'Khar') {
-        this.recipeData = this.kharData;
+        case 'Dahi Pakhala':
+          this.recipeData = this.dahiPakhalaData;
+          break;
 
-      } else if (this.recipe === 'Sarson da Saag') {
-        this.recipeData = this.sarsonSaagData;
+        case 'Sarson da Saag':
+          this.recipeData = this.sarsonSaagData;
+          break;
 
-      } else if (this.recipe === 'Dal Baati Churma') {
-        this.recipeData = this.dalBaatiChurmaData;
+        case 'Dal Baati Churma':
+          this.recipeData = this.dalBaatiChurmaData;
+          break;
 
-      } else if (this.recipe === 'Macher Jhol') {
-        this.recipeData = this.macherJholData;
+        case 'Awadhi Biryani':
+          this.recipeData = this.awadhiBiryaniData;
+          break;
 
-      } else if (this.recipe === 'Dhuska') {
-        this.recipeData = this.dhuskaData;
+        case 'Macher Jhol':
+          this.recipeData = this.macherJholData;
+          break;
 
-      } else if (this.recipe === 'Pongal') {
-        this.recipeData = this.pongalData;
+        case 'Litti Chokha':
+          this.recipeData = this.littiChokhaData;
+          break;
 
-      } else if (this.recipe === 'Avial') {
-        this.recipeData = this.avialData;
+        case 'Dhuska':
+          this.recipeData = this.dhuskaData;
+          break;
 
-      } else if (this.recipe === 'Bisi Bele Bath') {
-        this.recipeData = this.bisiBeleBathData;
+        case 'Pongal':
+          this.recipeData = this.pongalData;
+          break;
 
-      } else if (this.recipe === 'Misal Pav') {
-        this.recipeData = this.misalPavData;
+        case 'Avial':
+          this.recipeData = this.avialData;
+          break;
+
+        case 'Bisi Bele Bath':
+          this.recipeData = this.bisiBeleBathData;
+          break;
+
+        case 'Misal Pav':
+          this.recipeData = this.misalPavData;
+          break;
+
+        case 'Dhokla':
+          this.recipeData = this.dhoklaData;
+          break;
+
+        case 'Goan Fish Curry':
+          this.recipeData = this.goanFishCurryData;
+          break;
+
+        case 'Masor Tenga':
+          this.recipeData = this.masorTengaData;
+          break;
+
+        case 'Khar':
+          this.recipeData = this.kharData;
+          break;
+
+        case 'Momos':
+          this.recipeData = this.momosData;
+          break;
+
+        case 'Smoked Pork with Bamboo Shoot':
+          this.recipeData = this.smokedPorkData;
+          break;
+
+        case 'Thukpa':
+          this.recipeData = this.thukpaData;
+          break;
+
+        case 'Bai':
+          this.recipeData = this.baiData;
+          break;
+
+        case 'Mui Borok':
+          this.recipeData = this.muiBorokData;
+          break;
+
+        case 'Poha':
+          this.recipeData = this.pohaData;
+          break;
+
+        case 'Faraa':
+          this.recipeData = this.faraaData;
+          break;
+
+        default:
+          this.recipeData = this.dalmaData;
+          break;
       }
 
     });
 
   }
+
+
+  /* ========================================================= */
+  /* ODISHA */
+  /* ========================================================= */
+
+  dalmaData: Recipe = {
+
+    name: 'Dalma',
+
+    nativeName: 'ଡାଲମା',
+
+    state: 'Odisha',
+
+    language: 'Odia',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '45 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'A traditional Odia dish made with lentils, vegetables and aromatic spices.',
+
+    about:
+      'Dalma is one of Odisha’s most comforting traditional dishes. It combines dal with vegetables and roasted spices to create a wholesome and naturally flavorful meal.',
+
+    story:
+      'Dalma has long been part of everyday Odia cooking. Its simple preparation reflects the region’s preference for nutritious food made with seasonal vegetables and familiar spices.',
+
+    ingredients: [
+      'Toor dal – 1 cup',
+      'Raw papaya – 1 cup',
+      'Potato – 1',
+      'Raw banana – 1',
+      'Pumpkin – 1 cup',
+      'Tomato – 1',
+      'Drumstick – 1'
+    ],
+
+    masala: [
+      'Cumin seeds',
+      'Dry red chillies',
+      'Turmeric',
+      'Ginger',
+      'Salt',
+      'Ghee'
+    ],
+
+    preparation: [
+      'Wash and pressure cook the dal with turmeric.',
+      'Add chopped vegetables and cook until tender.',
+      'Dry roast cumin seeds and dry red chillies.',
+      'Grind the roasted spices lightly.',
+      'Add the roasted spice mixture to the cooked dal and vegetables.',
+      'Finish with a small amount of ghee and serve hot.'
+    ],
+
+    serving:
+      'Serve hot with steamed rice and a drizzle of ghee.',
+
+    chefTip:
+      'Use seasonal vegetables for a more authentic traditional flavour.',
+
+    nativeCaption:
+      'ଡାଲମା — ସରଳତାରେ ଲୁଚିଥିବା ଓଡ଼ିଶାର ଅସଲି ସ୍ୱାଦ।',
+
+    englishCaption:
+      'Dalma — the true taste of Odisha hidden in simplicity.'
+  };
+
+
+  pakhalaData: Recipe = {
+
+    name: 'Pakhala Bhata',
+
+    nativeName: 'ପଖାଳ ଭାତ',
+
+    state: 'Odisha',
+
+    language: 'Odia',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '15 minutes',
+
+    serves: '2 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'Fermented rice soaked in water and traditionally enjoyed with curd, salt and seasonal accompaniments.',
+
+    about:
+      'Pakhala Bhata is one of Odisha’s most loved traditional summer foods. Its cooling and refreshing nature makes it especially popular during hot weather.',
+
+    story:
+      'For generations, pakhala has been a simple everyday meal in Odia households, valued for its refreshing character and uncomplicated preparation.',
+
+    ingredients: [
+      'Cooked rice – 2 cups',
+      'Water – 2 cups',
+      'Curd – ½ cup',
+      'Salt – to taste',
+      'Green chilli – 2',
+      'Lemon – 1'
+    ],
+
+    masala: [
+      'Roasted cumin powder',
+      'Salt',
+      'Green chilli',
+      'Fresh coriander'
+    ],
+
+    preparation: [
+      'Place cooked rice in a bowl.',
+      'Add water and allow the rice to soak.',
+      'Add curd and salt.',
+      'Mix gently.',
+      'Add roasted cumin powder and green chilli.',
+      'Serve chilled or at room temperature.'
+    ],
+
+    serving:
+      'Traditionally served with fried vegetables, saga bhaja, fish or badi.',
+
+    chefTip:
+      'Let the rice ferment naturally for a richer traditional flavour.',
+
+    nativeCaption:
+      'ପଖାଳ ଭାତ — ଖରାଦିନରେ ଓଡ଼ିଶାର ଥଣ୍ଡା ସୁଖ।',
+
+    englishCaption:
+      'Pakhala Bhata — Odisha’s refreshing comfort on a summer day.'
+  };
+
+
+  dahiPakhalaData: Recipe = {
+
+    name: 'Dahi Pakhala',
+
+    nativeName: 'ଦହି ପଖାଳ',
+
+    state: 'Odisha',
+
+    language: 'Odia',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '15 minutes',
+
+    serves: '2 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'A cooling variation of pakhala made with rice, water and creamy curd.',
+
+    about:
+      'Dahi Pakhala combines fermented rice with curd to create a cooling and refreshing traditional Odia meal.',
+
+    story:
+      'Dahi pakhala is especially associated with warm days in Odisha, when simple meals provide both comfort and refreshment.',
+
+    ingredients: [
+      'Cooked rice – 2 cups',
+      'Curd – 1 cup',
+      'Water – 1 cup',
+      'Salt – to taste',
+      'Green chilli – 2'
+    ],
+
+    masala: [
+      'Roasted cumin',
+      'Green chilli',
+      'Fresh coriander'
+    ],
+
+    preparation: [
+      'Place cooked rice in a bowl.',
+      'Add water and curd.',
+      'Mix gently until creamy.',
+      'Add salt and roasted cumin.',
+      'Garnish with coriander and green chilli.',
+      'Serve cool.'
+    ],
+
+    serving:
+      'Serve with fried vegetables, saga bhaja or traditional Odia sides.',
+
+    chefTip:
+      'Use fresh homemade curd for the best creamy texture.',
+
+    nativeCaption:
+      'ଦହି ପଖାଳ — ଓଡ଼ିଆ ଘରର ସରଳତାରେ ମିଳେ ଶୀତଳ ସନ୍ତୋଷ।',
+
+    englishCaption:
+      'Dahi Pakhala — cool comfort found in the simplicity of an Odia home.'
+  };
+
+
+  /* ========================================================= */
+  /* PUNJAB */
+  /* ========================================================= */
+
+  sarsonSaagData: Recipe = {
+
+    name: 'Sarson da Saag',
+
+    nativeName: 'ਸਰੋਂ ਦਾ ਸਾਗ',
+
+    state: 'Punjab',
+
+    language: 'Punjabi',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '60 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Medium',
+
+    description:
+      'A classic Punjabi preparation made with mustard greens and other leafy greens.',
+
+    about:
+      'Sarson da Saag is a beloved Punjabi winter dish traditionally served with makki di roti.',
+
+    story:
+      'The dish is closely connected with Punjab’s winter harvest and agricultural food traditions.',
+
+    ingredients: [
+      'Mustard greens – 500 g',
+      'Spinach – 200 g',
+      'Bathua – 100 g',
+      'Onion – 1',
+      'Tomato – 2',
+      'Ginger – 1 inch'
+    ],
+
+    masala: [
+      'Green chilli',
+      'Red chilli powder',
+      'Turmeric',
+      'Salt',
+      'Ghee'
+    ],
+
+    preparation: [
+      'Wash and chop all the greens.',
+      'Cook the greens until soft.',
+      'Blend them into a coarse paste.',
+      'Prepare a tempering with onion, tomato and spices.',
+      'Add the greens and simmer.',
+      'Finish with ghee.'
+    ],
+
+    serving:
+      'Serve hot with makki di roti and a spoonful of white butter.',
+
+    chefTip:
+      'Slow cooking helps develop the deep earthy flavour of the greens.',
+
+    nativeCaption:
+      'ਸਰੋਂ ਦਾ ਸਾਗ — ਪੰਜਾਬ ਦੀ ਮਿੱਟੀ ਦੀ ਖੁਸ਼ਬੂ, ਹਰ ਨਿਵਾਲੇ ਵਿੱਚ।',
+
+    englishCaption:
+      'Sarson da Saag — the fragrance of Punjab’s soil in every bite.'
+  };
+
+
+  /* ========================================================= */
+  /* RAJASTHAN */
+  /* ========================================================= */
+
+  dalBaatiChurmaData: Recipe = {
+
+    name: 'Dal Baati Churma',
+
+    nativeName: 'दाल बाटी चूरमा',
+
+    state: 'Rajasthan',
+
+    language: 'Hindi',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '75 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Medium',
+
+    description:
+      'A famous Rajasthani combination of dal, baked baati and sweet churma.',
+
+    about:
+      'Dal Baati Churma is one of Rajasthan’s most recognizable traditional meals.',
+
+    story:
+      'The dish developed around the region’s dry climate and ingredients that could be stored and cooked efficiently.',
+
+    ingredients: [
+      'Wheat flour – 2 cups',
+      'Toor dal – ½ cup',
+      'Moong dal – ½ cup',
+      'Ghee – 4 tbsp',
+      'Jaggery – ½ cup'
+    ],
+
+    masala: [
+      'Cumin',
+      'Red chilli',
+      'Turmeric',
+      'Coriander powder',
+      'Salt'
+    ],
+
+    preparation: [
+      'Prepare a firm dough with wheat flour.',
+      'Shape the dough into round baatis.',
+      'Bake or roast until golden.',
+      'Cook the mixed dals until soft.',
+      'Prepare a spiced tempering for the dal.',
+      'Crush baati with ghee and serve with dal and churma.'
+    ],
+
+    serving:
+      'Serve hot with generous amounts of ghee, dal and sweet churma.',
+
+    chefTip:
+      'Traditional baati develops the best flavour when cooked slowly.',
+
+    nativeCaption:
+      'दाल बाटी चूरमा — राजस्थान की शान, थाली में सजा स्वाद।',
+
+    englishCaption:
+      'Dal Baati Churma — the pride of Rajasthan served on a plate.'
+  };
+
+
+  /* ========================================================= */
+  /* UTTAR PRADESH */
+  /* ========================================================= */
+
+  awadhiBiryaniData: Recipe = {
+
+    name: 'Awadhi Biryani',
+
+    nativeName: 'अवधी बिरयानी',
+
+    state: 'Uttar Pradesh',
+
+    language: 'Hindi',
+
+    category: 'Traditional',
+
+    type: 'Non-Vegetarian',
+
+    time: '90 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Medium',
+
+    description:
+      'Fragrant layered rice inspired by the refined culinary traditions of Awadh.',
+
+    about:
+      'Awadhi cuisine is known for delicate spices, slow cooking and aromatic dishes.',
+
+    story:
+      'The culinary traditions of Awadh developed a distinctive style of cooking that emphasizes fragrance and gentle seasoning.',
+
+    ingredients: [
+      'Basmati rice – 2 cups',
+      'Chicken – 500 g',
+      'Onion – 2',
+      'Yogurt – ½ cup',
+      'Milk – ½ cup'
+    ],
+
+    masala: [
+      'Cardamom',
+      'Cinnamon',
+      'Cloves',
+      'Bay leaf',
+      'Saffron',
+      'Garam masala'
+    ],
+
+    preparation: [
+      'Marinate the chicken with yogurt and spices.',
+      'Cook the basmati rice until partially done.',
+      'Prepare the chicken masala.',
+      'Layer rice over the chicken.',
+      'Add saffron milk.',
+      'Cover and cook on low heat.'
+    ],
+
+    serving:
+      'Serve with raita and a fresh salad.',
+
+    chefTip:
+      'Keep the final cooking temperature low to preserve the delicate aroma.',
+
+    nativeCaption:
+      'अवधी बिरयानी — नफ़ासत और खुशबू का स्वाद, हर परत में।',
+
+    englishCaption:
+      'Awadhi Biryani — elegance and fragrance layered into every bite.'
+  };
+
+
+  /* ========================================================= */
+  /* WEST BENGAL */
+  /* ========================================================= */
+
+  macherJholData: Recipe = {
+
+    name: 'Macher Jhol',
+
+    nativeName: 'মাছের ঝোল',
+
+    state: 'West Bengal',
+
+    language: 'Bengali',
+
+    category: 'Traditional',
+
+    type: 'Non-Vegetarian',
+
+    time: '40 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'A light Bengali fish curry prepared with potatoes, tomatoes and fragrant spices.',
+
+    about:
+      'Macher Jhol is a familiar everyday Bengali fish preparation appreciated for its light and comforting character.',
+
+    story:
+      'Fish has a central place in Bengali food culture, and simple jhol preparations are common across Bengali households.',
+
+    ingredients: [
+      'Rohu fish – 500 g',
+      'Potato – 2',
+      'Tomato – 2',
+      'Mustard oil – 3 tbsp',
+      'Green chilli – 2'
+    ],
+
+    masala: [
+      'Turmeric',
+      'Cumin',
+      'Coriander',
+      'Red chilli',
+      'Salt'
+    ],
+
+    preparation: [
+      'Marinate the fish with turmeric and salt.',
+      'Lightly fry the fish.',
+      'Fry the potatoes.',
+      'Prepare the spice base with tomatoes.',
+      'Add water and simmer.',
+      'Add the fish and cook gently.'
+    ],
+
+    serving:
+      'Serve hot with steamed rice.',
+
+    chefTip:
+      'Mustard oil adds the characteristic Bengali aroma to the dish.',
+
+    nativeCaption:
+      'মাছের ঝোল — বাঙালির পাতে ঘরের চেনা স্বাদ।',
+
+    englishCaption:
+      'Macher Jhol — the familiar taste of home on a Bengali plate.'
+  };
+
+
+  /* ========================================================= */
+  /* BIHAR */
+  /* ========================================================= */
+
+  littiChokhaData: Recipe = {
+
+    name: 'Litti Chokha',
+
+    nativeName: 'लिट्टी चोखा',
+
+    state: 'Bihar',
+
+    language: 'Hindi',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '60 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Medium',
+
+    description:
+      'Roasted wheat balls filled with spiced sattu and served with mashed vegetables.',
+
+    about:
+      'Litti Chokha is a famous traditional food associated with Bihar and the surrounding region.',
+
+    story:
+      'Its simple ingredients and roasting method made litti a practical and satisfying food for rural communities.',
+
+    ingredients: [
+      'Wheat flour – 2 cups',
+      'Sattu – 1 cup',
+      'Potato – 2',
+      'Tomato – 2',
+      'Brinjal – 1'
+    ],
+
+    masala: [
+      'Ajwain',
+      'Cumin',
+      'Garlic',
+      'Green chilli',
+      'Mustard oil',
+      'Salt'
+    ],
+
+    preparation: [
+      'Prepare a wheat dough.',
+      'Mix sattu with spices and mustard oil.',
+      'Stuff the dough balls with the sattu mixture.',
+      'Roast until cooked and lightly charred.',
+      'Prepare mashed potato, tomato and brinjal chokha.',
+      'Serve with ghee.'
+    ],
+
+    serving:
+      'Serve hot with chokha and melted ghee.',
+
+    chefTip:
+      'A light smoky roast gives litti its characteristic flavour.',
+
+    nativeCaption:
+      'लिट्टी चोखा — मिट्टी की खुशबू और बिहार की सादगी, एक ही थाली में।',
+
+    englishCaption:
+      'Litti Chokha — the earthy aroma and simplicity of Bihar on one plate.'
+  };
+
+
+  /* ========================================================= */
+  /* JHARKHAND */
+  /* ========================================================= */
+
+  dhuskaData: Recipe = {
+
+    name: 'Dhuska',
+
+    nativeName: 'धुस्का',
+
+    state: 'Jharkhand',
+
+    language: 'Hindi',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '40 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'A traditional crispy preparation made from fermented rice and lentil batter.',
+
+    about:
+      'Dhuska is a popular traditional food of Jharkhand made from rice and lentils.',
+
+    story:
+      'The dish reflects Jharkhand’s food traditions built around locally available grains and pulses.',
+
+    ingredients: [
+      'Rice – 1 cup',
+      'Chana dal – ½ cup',
+      'Potato – 2',
+      'Green chilli – 2'
+    ],
+
+    masala: [
+      'Cumin',
+      'Turmeric',
+      'Green chilli',
+      'Salt'
+    ],
+
+    preparation: [
+      'Soak rice and dal.',
+      'Grind them into a smooth batter.',
+      'Add spices and allow the batter to rest.',
+      'Heat oil in a pan.',
+      'Pour small portions of batter.',
+      'Fry until golden and crisp.'
+    ],
+
+    serving:
+      'Serve with potato curry or spicy chutney.',
+
+    chefTip:
+      'Allowing the batter to rest improves its texture.',
+
+    nativeCaption:
+      'धुस्का — झारखंड की देसी रसोई का कुरकुरा और अपनापन भरा स्वाद।',
+
+    englishCaption:
+      'Dhuska — the crisp, homely taste of Jharkhand’s traditional kitchen.'
+  };
+
+
+  /* ========================================================= */
+  /* TAMIL NADU */
+  /* ========================================================= */
+
+  pongalData: Recipe = {
+
+    name: 'Pongal',
+
+    nativeName: 'பொங்கல்',
+
+    state: 'Tamil Nadu',
+
+    language: 'Tamil',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '35 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'A comforting rice and lentil dish seasoned with ghee, pepper and cumin.',
+
+    about:
+      'Pongal is one of Tamil Nadu’s most familiar traditional preparations and is closely associated with the harvest festival of the same name.',
+
+    story:
+      'The dish represents abundance, gratitude and the importance of rice in Tamil food culture.',
+
+    ingredients: [
+      'Rice – 1 cup',
+      'Moong dal – ½ cup',
+      'Ghee – 3 tbsp',
+      'Cashews – 10',
+      'Ginger – 1 inch'
+    ],
+
+    masala: [
+      'Black pepper',
+      'Cumin',
+      'Curry leaves',
+      'Ginger',
+      'Salt'
+    ],
+
+    preparation: [
+      'Wash the rice and dal.',
+      'Cook them together until soft.',
+      'Prepare a ghee tempering.',
+      'Add pepper, cumin, ginger and curry leaves.',
+      'Mix the tempering into the cooked rice and dal.',
+      'Finish with roasted cashews.'
+    ],
+
+    serving:
+      'Serve warm with coconut chutney or sambar.',
+
+    chefTip:
+      'Use generous ghee for the traditional aroma and creamy texture.',
+
+    nativeCaption:
+      'பொங்கல் — பாரம்பரியத்தின் மணம் கலந்த இனிய தொடக்கம்.',
+
+    englishCaption:
+      'Pongal — a beautiful beginning filled with the aroma of tradition.'
+  };
+
+
+  /* ========================================================= */
+  /* KERALA */
+  /* ========================================================= */
+
+  avialData: Recipe = {
+
+    name: 'Avial',
+
+    nativeName: 'അവിയൽ',
+
+    state: 'Kerala',
+
+    language: 'Malayalam',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '40 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'A traditional Kerala vegetable preparation made with coconut and yogurt.',
+
+    about:
+      'Avial combines several vegetables with coconut, green chilli and yogurt to create a balanced traditional dish.',
+
+    story:
+      'Avial is closely associated with Kerala’s festive meals and the elaborate Sadya tradition.',
+
+    ingredients: [
+      'Mixed vegetables – 4 cups',
+      'Grated coconut – 1 cup',
+      'Yogurt – ½ cup',
+      'Green chilli – 3',
+      'Coconut oil – 1 tbsp'
+    ],
+
+    masala: [
+      'Cumin',
+      'Green chilli',
+      'Curry leaves',
+      'Salt'
+    ],
+
+    preparation: [
+      'Cut vegetables into long pieces.',
+      'Cook them with minimal water.',
+      'Grind coconut, cumin and green chilli.',
+      'Mix the coconut paste with the vegetables.',
+      'Add yogurt after reducing the heat.',
+      'Finish with coconut oil and curry leaves.'
+    ],
+
+    serving:
+      'Serve as part of a traditional Kerala Sadya with rice.',
+
+    chefTip:
+      'Do not overcook the vegetables; they should retain their shape.',
+
+    nativeCaption:
+      'അവിയൽ — നാടൻ രുചിയുടെ ലാളിത്യവും നിറവും ഒരുമിച്ച്.',
+
+    englishCaption:
+      'Avial — the simplicity and richness of Kerala’s traditional flavours together.'
+  };
+
+
+  /* ========================================================= */
+  /* KARNATAKA */
+  /* ========================================================= */
+
+  bisiBeleBathData: Recipe = {
+
+    name: 'Bisi Bele Bath',
+
+    nativeName: 'ಬಿಸಿ ಬೇಳೆ ಬಾತ್',
+
+    state: 'Karnataka',
+
+    language: 'Kannada',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '50 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Medium',
+
+    description:
+      'A warm rice and lentil dish cooked with vegetables and aromatic spices.',
+
+    about:
+      'Bisi Bele Bath is a classic Karnataka dish combining rice, lentils, vegetables and a distinctive spice blend.',
+
+    story:
+      'The dish is a staple of Karnataka home cooking and is known for its rich balance of spice, tang and warmth.',
+
+    ingredients: [
+      'Rice – 1 cup',
+      'Toor dal – ½ cup',
+      'Mixed vegetables – 2 cups',
+      'Tamarind – small lemon-sized piece',
+      'Peanuts – 2 tbsp'
+    ],
+
+    masala: [
+      'Coriander',
+      'Cumin',
+      'Cloves',
+      'Cinnamon',
+      'Dry red chilli'
+    ],
+
+    preparation: [
+      'Cook rice and dal together.',
+      'Cook the vegetables separately.',
+      'Prepare the spice mixture.',
+      'Combine rice, dal and vegetables.',
+      'Add tamarind and spice mixture.',
+      'Simmer until thick and aromatic.'
+    ],
+
+    serving:
+      'Serve hot with ghee, boondi or papad.',
+
+    chefTip:
+      'Allow the dish to rest for a few minutes before serving.',
+
+    nativeCaption:
+      'ಬಿಸಿ ಬೇಳೆ ಬಾತ್ — ಕರ್ನಾಟಕದ ಮನದಾಳದ ಉಷ್ಣತೆ, ಒಂದು ತಟ್ಟೆಯಲ್ಲಿ.',
+
+    englishCaption:
+      'Bisi Bele Bath — the warmth of Karnataka’s heart in a single plate.'
+  };
+
+
+  /* ========================================================= */
+  /* MAHARASHTRA */
+  /* ========================================================= */
+
+  misalPavData: Recipe = {
+
+    name: 'Misal Pav',
+
+    nativeName: 'मिसळ पाव',
+
+    state: 'Maharashtra',
+
+    language: 'Marathi',
+
+    category: 'Street Food',
+
+    type: 'Vegetarian',
+
+    time: '45 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Medium',
+
+    description:
+      'A spicy sprouted-lentil preparation topped with farsan and served with pav.',
+
+    about:
+      'Misal Pav is one of Maharashtra’s most popular spicy and filling foods.',
+
+    story:
+      'Different regions of Maharashtra have developed their own variations of misal, each with a distinctive level of spice and flavour.',
+
+    ingredients: [
+      'Mixed sprouts – 2 cups',
+      'Onion – 1',
+      'Tomato – 2',
+      'Potato – 1',
+      'Farsan – 1 cup',
+      'Pav – 8'
+    ],
+
+    masala: [
+      'Goda masala',
+      'Red chilli powder',
+      'Cumin',
+      'Turmeric',
+      'Ginger-garlic',
+      'Salt'
+    ],
+
+    preparation: [
+      'Cook the mixed sprouts until tender.',
+      'Prepare a spicy onion and tomato base.',
+      'Add the cooked sprouts.',
+      'Simmer until the curry develops flavour.',
+      'Top with farsan and chopped onion.',
+      'Serve with toasted pav.'
+    ],
+
+    serving:
+      'Serve hot with pav, lemon and chopped onion.',
+
+    chefTip:
+      'Adjust the amount of spicy tari according to your preference.',
+
+    nativeCaption:
+      'मिसळ पाव — तिखटपणातही महाराष्ट्राची खास ओळख.',
+
+    englishCaption:
+      'Misal Pav — Maharashtra’s distinctive character in every spicy bite.'
+  };
+
+
+  /* ========================================================= */
+  /* GUJARAT */
+  /* ========================================================= */
+
+  dhoklaData: Recipe = {
+
+    name: 'Dhokla',
+
+    nativeName: 'ઢોકળા',
+
+    state: 'Gujarat',
+
+    language: 'Gujarati',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '35 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'A soft steamed Gujarati preparation made from fermented gram flour batter.',
+
+    about:
+      'Dhokla is a popular Gujarati snack known for its soft texture and light savoury flavour.',
+
+    story:
+      'Steamed snack traditions are an important part of Gujarati food culture, and dhokla is enjoyed across the state.',
+
+    ingredients: [
+      'Besan – 2 cups',
+      'Curd – ½ cup',
+      'Water – as required',
+      'Sugar – 1 tsp',
+      'Lemon juice – 1 tbsp'
+    ],
+
+    masala: [
+      'Mustard seeds',
+      'Sesame seeds',
+      'Green chilli',
+      'Curry leaves',
+      'Salt'
+    ],
+
+    preparation: [
+      'Prepare a smooth besan batter.',
+      'Allow it to rest.',
+      'Add the leavening ingredients.',
+      'Steam until fluffy.',
+      'Prepare a mustard and sesame tempering.',
+      'Pour the tempering over the dhokla.'
+    ],
+
+    serving:
+      'Serve with green chutney and sweet tamarind chutney.',
+
+    chefTip:
+      'Do not over-steam the batter, as it can make the dhokla dense.',
+
+    nativeCaption:
+      'ઢોકળા — ગુજરાતની નરમાઈ, સાદગી અને સ્વાદનો સુંદર સંગમ.',
+
+    englishCaption:
+      'Dhokla — a beautiful blend of Gujarat’s softness, simplicity and flavour.'
+  };
+
+
+  /* ========================================================= */
+  /* GOA */
+  /* ========================================================= */
+
+  goanFishCurryData: Recipe = {
+
+    name: 'Goan Fish Curry',
+
+    nativeName: 'आंबट तिखट गोवन फिश करी',
+
+    state: 'Goa',
+
+    language: 'Konkani',
+
+    category: 'Coastal',
+
+    type: 'Non-Vegetarian',
+
+    time: '40 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Medium',
+
+    description:
+      'A coastal fish curry made with coconut, spices and a characteristic tang.',
+
+    about:
+      'Goan fish curry reflects Goa’s coastal food culture, combining seafood with coconut and tangy local flavours.',
+
+    story:
+      'The cuisine of Goa is deeply connected with its coastline, tropical ingredients and distinctive spice traditions.',
+
+    ingredients: [
+      'Fish – 500 g',
+      'Grated coconut – 1 cup',
+      'Tamarind – small amount',
+      'Onion – 1',
+      'Tomato – 1'
+    ],
+
+    masala: [
+      'Red chillies',
+      'Coriander',
+      'Cumin',
+      'Turmeric',
+      'Garlic'
+    ],
+
+    preparation: [
+      'Marinate the fish lightly with salt and turmeric.',
+      'Grind coconut and spices.',
+      'Cook the masala with onion and tomato.',
+      'Add water and tamarind.',
+      'Place the fish into the curry.',
+      'Simmer gently until cooked.'
+    ],
+
+    serving:
+      'Serve with steamed rice or traditional Goan rice.',
+
+    chefTip:
+      'Balance the sourness carefully so it complements rather than overpowers the fish.',
+
+    nativeCaption:
+      'गोवन फिश करी — समुद्राच्या चवीत मिसळलेली गोव्याची उबदार ओळख.',
+
+    englishCaption:
+      'Goan Fish Curry — Goa’s warm identity blended with the flavour of the sea.'
+  };
+
+
+  /* ========================================================= */
+  /* ASSAM */
+  /* ========================================================= */
+
+  masorTengaData: Recipe = {
+
+    name: 'Masor Tenga',
+
+    nativeName: 'মাছৰ টেঙা',
+
+    state: 'Assam',
+
+    language: 'Assamese',
+
+    category: 'Traditional',
+
+    type: 'Non-Vegetarian',
+
+    time: '40 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'A light and refreshing Assamese fish curry with a naturally tangy flavour.',
+
+    about:
+      'Masor Tenga is one of Assam’s signature fish preparations, known for its light texture and refreshing sourness.',
+
+    story:
+      'The dish reflects Assam’s preference for delicate cooking and naturally sour ingredients.',
+
+    ingredients: [
+      'Fish – 500 g',
+      'Tomato – 2',
+      'Potato – 1',
+      'Lemon – 1',
+      'Mustard oil – 2 tbsp'
+    ],
+
+    masala: [
+      'Turmeric',
+      'Fenugreek seeds',
+      'Green chilli',
+      'Salt'
+    ],
+
+    preparation: [
+      'Marinate the fish with turmeric and salt.',
+      'Lightly fry the fish.',
+      'Prepare a tomato-based broth.',
+      'Add water and simmer.',
+      'Add the fish.',
+      'Finish with lemon juice.'
+    ],
+
+    serving:
+      'Serve hot with steamed rice.',
+
+    chefTip:
+      'Add the souring ingredient gradually to maintain a balanced flavour.',
+
+    nativeCaption:
+      'মাছৰ টেঙা — অসমৰ সৰল ৰন্ধনশৈলীত লুকাই থকা সতেজ সোৱাদ।',
+
+    englishCaption:
+      'Masor Tenga — a refreshing flavour hidden in Assam’s simple cooking tradition.'
+  };
+
+
+  kharData: Recipe = {
+
+    name: 'Khar',
+
+    nativeName: 'খাৰ',
+
+    state: 'Assam',
+
+    language: 'Assamese',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '35 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'A distinctive Assamese preparation traditionally made using alkaline ingredients.',
+
+    about:
+      'Khar is a characteristic part of Assamese cuisine and is traditionally enjoyed as part of a larger meal.',
+
+    story:
+      'The preparation represents Assam’s unique culinary use of local ingredients and traditional alkaline cooking techniques.',
+
+    ingredients: [
+      'Raw papaya – 2 cups',
+      'Khar solution – as required',
+      'Potato – 1',
+      'Green chilli – 2'
+    ],
+
+    masala: [
+      'Mustard oil',
+      'Green chilli',
+      'Salt'
+    ],
+
+    preparation: [
+      'Cut the vegetables into small pieces.',
+      'Cook them until tender.',
+      'Add the khar solution carefully.',
+      'Simmer gently.',
+      'Add green chilli and salt.',
+      'Finish with a small amount of mustard oil.'
+    ],
+
+    serving:
+      'Serve with steamed rice as part of a traditional Assamese meal.',
+
+    chefTip:
+      'Use the alkaline ingredient carefully to maintain the delicate flavour.',
+
+    nativeCaption:
+      'খাৰ — অসমৰ খাদ্য পৰম্পৰাৰ এক সুকীয়া সৰলতা।',
+
+    englishCaption:
+      'Khar — a distinctive simplicity rooted in Assam’s food tradition.'
+  };
+
+
+  /* ========================================================= */
+  /* SIKKIM */
+  /* ========================================================= */
+
+  momosData: Recipe = {
+
+    name: 'Momos',
+
+    nativeName: 'मोमो',
+
+    state: 'Sikkim',
+
+    language: 'Nepali',
+
+    category: 'Himalayan',
+
+    type: 'Vegetarian',
+
+    time: '50 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Medium',
+
+    description:
+      'Steamed Himalayan dumplings filled with vegetables and aromatic seasoning.',
+
+    about:
+      'Momos are deeply popular across the Himalayan region and are an important part of Sikkim’s food culture.',
+
+    story:
+      'The dish reflects the influence of Himalayan and Tibetan food traditions in Sikkim.',
+
+    ingredients: [
+      'Refined flour – 2 cups',
+      'Cabbage – 1 cup',
+      'Carrot – ½ cup',
+      'Onion – 1',
+      'Spring onion – ½ cup'
+    ],
+
+    masala: [
+      'Ginger',
+      'Garlic',
+      'Black pepper',
+      'Salt',
+      'Soy sauce'
+    ],
+
+    preparation: [
+      'Prepare a soft dough with flour.',
+      'Chop and season the vegetables.',
+      'Roll small dough circles.',
+      'Fill them with the vegetable mixture.',
+      'Shape the dumplings.',
+      'Steam until cooked.'
+    ],
+
+    serving:
+      'Serve hot with spicy tomato chutney.',
+
+    chefTip:
+      'Keep the dough thin but strong enough to hold the filling.',
+
+    nativeCaption:
+      'मोमो — सिक्किम की पहाड़ी हवा जैसा सुकून, हर निवाले में।',
+
+    englishCaption:
+      'Momos — the comforting calm of Sikkim’s mountain air in every bite.'
+  };
+
+
+  /* ========================================================= */
+  /* NAGALAND */
+  /* ========================================================= */
+
+  smokedPorkData: Recipe = {
+
+    name: 'Smoked Pork with Bamboo Shoot',
+
+    nativeName: 'आखुनी के साथ स्मोक्ड पोर्क',
+
+    state: 'Nagaland',
+
+    language: 'Naga',
+
+    category: 'Traditional',
+
+    type: 'Non-Vegetarian',
+
+    time: '90 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Medium',
+
+    description:
+      'A traditional Naga-style pork preparation combining smoky meat with bamboo shoot.',
+
+    about:
+      'Smoked pork and bamboo shoot are characteristic ingredients in several Naga food traditions.',
+
+    story:
+      'Smoking and preserving meat developed as practical traditional methods while also creating a distinctive flavour.',
+
+    ingredients: [
+      'Smoked pork – 500 g',
+      'Bamboo shoot – 1 cup',
+      'Tomato – 2',
+      'Green chilli – 3'
+    ],
+
+    masala: [
+      'Ginger',
+      'Garlic',
+      'Green chilli',
+      'Salt'
+    ],
+
+    preparation: [
+      'Cut the smoked pork into pieces.',
+      'Cook the pork until tender.',
+      'Add bamboo shoot.',
+      'Add tomatoes and chillies.',
+      'Simmer until the flavours combine.',
+      'Adjust salt and serve hot.'
+    ],
+
+    serving:
+      'Serve with steamed rice.',
+
+    chefTip:
+      'The smoky flavour should remain prominent without overpowering the bamboo shoot.',
+
+    nativeCaption:
+      'नागालैंड का स्मोक्ड पोर्क — धुएँ की खुशबू में बसी पहाड़ी रसोई की पहचान।',
+
+    englishCaption:
+      'Smoked Pork of Nagaland — the identity of a mountain kitchen carried in a smoky aroma.'
+  };
+
+
+  /* ========================================================= */
+  /* ARUNACHAL PRADESH */
+  /* ========================================================= */
+
+  thukpaData: Recipe = {
+
+    name: 'Thukpa',
+
+    nativeName: 'थुकपा',
+
+    state: 'Arunachal Pradesh',
+
+    language: 'Tibetan',
+
+    category: 'Himalayan',
+
+    type: 'Vegetarian',
+
+    time: '45 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'A warm Himalayan noodle soup prepared with vegetables and aromatic broth.',
+
+    about:
+      'Thukpa is a comforting noodle soup popular in the Himalayan regions of Arunachal Pradesh.',
+
+    story:
+      'Its warm broth and noodles make it especially suited to the cooler mountain climate.',
+
+    ingredients: [
+      'Noodles – 200 g',
+      'Carrot – 1',
+      'Cabbage – 1 cup',
+      'Spring onion – ½ cup',
+      'Vegetable stock – 4 cups'
+    ],
+
+    masala: [
+      'Ginger',
+      'Garlic',
+      'Black pepper',
+      'Soy sauce',
+      'Salt'
+    ],
+
+    preparation: [
+      'Prepare the vegetable broth.',
+      'Add chopped vegetables.',
+      'Cook until slightly tender.',
+      'Add noodles.',
+      'Season with spices and soy sauce.',
+      'Simmer until the noodles are cooked.'
+    ],
+
+    serving:
+      'Serve hot in a deep bowl with fresh spring onion.',
+
+    chefTip:
+      'Keep the broth light so the natural vegetable flavours remain noticeable.',
+
+    nativeCaption:
+      'थुकपा — अरुणाचल की ठंडी पहाड़ियों में परोसी गई गरमाहट।',
+
+    englishCaption:
+      'Thukpa — warmth served among the cool mountains of Arunachal Pradesh.'
+  };
+
+
+  /* ========================================================= */
+  /* MIZORAM */
+  /* ========================================================= */
+
+  baiData: Recipe = {
+
+    name: 'Bai',
+
+    nativeName: 'Bai',
+
+    state: 'Mizoram',
+
+    language: 'Mizo',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '40 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'A simple traditional Mizo vegetable preparation made with fresh local ingredients.',
+
+    about:
+      'Bai is a traditional Mizo dish that focuses on vegetables and simple preparation.',
+
+    story:
+      'The dish reflects Mizoram’s preference for fresh ingredients and uncomplicated cooking.',
+
+    ingredients: [
+      'Mixed vegetables – 3 cups',
+      'Green beans – 1 cup',
+      'Potato – 1',
+      'Leafy greens – 1 cup'
+    ],
+
+    masala: [
+      'Ginger',
+      'Green chilli',
+      'Salt'
+    ],
+
+    preparation: [
+      'Wash and cut the vegetables.',
+      'Add them to a pot with water.',
+      'Cook until tender.',
+      'Add ginger and green chilli.',
+      'Season with salt.',
+      'Simmer briefly before serving.'
+    ],
+
+    serving:
+      'Serve warm with steamed rice.',
+
+    chefTip:
+      'Keep the seasoning simple to preserve the natural vegetable flavours.',
+
+    nativeCaption:
+      'Bai — Mizo ৰান্ধনীঘৰৰ সৰলতা আৰু সতেজতাৰ এক উষ্ণ স্বাদ।',
+
+    englishCaption:
+      'Bai — a warm taste of simplicity and freshness from a Mizo kitchen.'
+  };
+
+
+  /* ========================================================= */
+  /* TRIPURA */
+  /* ========================================================= */
+
+  muiBorokData: Recipe = {
+
+    name: 'Mui Borok',
+
+    nativeName: 'মুই বৰক',
+
+    state: 'Tripura',
+
+    language: 'Kokborok',
+
+    category: 'Traditional',
+
+    type: 'Non-Vegetarian',
+
+    time: '50 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Medium',
+
+    description:
+      'A traditional Tripuri food style centered around local ingredients and distinctive flavours.',
+
+    about:
+      'Mui Borok represents the traditional food culture of the indigenous communities of Tripura.',
+
+    story:
+      'Tripuri cuisine makes extensive use of local vegetables, herbs, bamboo and fermented ingredients.',
+
+    ingredients: [
+      'Fish or local protein – 400 g',
+      'Vegetables – 2 cups',
+      'Bamboo shoot – ½ cup',
+      'Green chilli – 3'
+    ],
+
+    masala: [
+      'Ginger',
+      'Garlic',
+      'Green chilli',
+      'Salt'
+    ],
+
+    preparation: [
+      'Prepare the vegetables and protein.',
+      'Cook them together with bamboo shoot.',
+      'Add ginger, garlic and chilli.',
+      'Simmer until tender.',
+      'Adjust salt.',
+      'Serve hot.'
+    ],
+
+    serving:
+      'Traditionally enjoyed with steamed rice.',
+
+    chefTip:
+      'Fresh local ingredients are the key to the character of Tripuri cooking.',
+
+    nativeCaption:
+      'মুই বৰক — ত্ৰিপুৰাৰ মাটিৰ সোৱাদ আৰু পৰম্পৰাৰ এক সৰল প্ৰকাশ।',
+
+    englishCaption:
+      'Mui Borok — a simple expression of Tripura’s land, flavour and tradition.'
+  };
+
+
+  /* ========================================================= */
+  /* MADHYA PRADESH */
+  /* ========================================================= */
+
+  pohaData: Recipe = {
+
+    name: 'Poha',
+
+    nativeName: 'पोहा',
+
+    state: 'Madhya Pradesh',
+
+    language: 'Hindi',
+
+    category: 'Breakfast',
+
+    type: 'Vegetarian',
+
+    time: '20 minutes',
+
+    serves: '2 people',
+
+    difficulty: 'Easy',
+
+    description:
+      'A light flattened-rice breakfast prepared with onion, peanuts and aromatic seasoning.',
+
+    about:
+      'Poha is a popular everyday breakfast across Madhya Pradesh, particularly associated with Indore.',
+
+    story:
+      'Simple ingredients and quick preparation have made poha a familiar breakfast across central India.',
+
+    ingredients: [
+      'Flattened rice – 2 cups',
+      'Onion – 1',
+      'Peanuts – ½ cup',
+      'Potato – 1',
+      'Lemon – 1'
+    ],
+
+    masala: [
+      'Mustard seeds',
+      'Turmeric',
+      'Green chilli',
+      'Curry leaves',
+      'Salt'
+    ],
+
+    preparation: [
+      'Wash the poha and drain it.',
+      'Prepare a tempering with mustard seeds.',
+      'Add onion, chilli and peanuts.',
+      'Add turmeric and potato.',
+      'Mix in the poha.',
+      'Finish with lemon juice and coriander.'
+    ],
+
+    serving:
+      'Serve warm with sev, coriander and lemon.',
+
+    chefTip:
+      'Do not soak poha for too long; it should remain soft but separate.',
+
+    nativeCaption:
+      'पोहा — मध्य प्रदेश की सुबह का हल्का, सादा और अपनापन भरा स्वाद।',
+
+    englishCaption:
+      'Poha — the light, simple and comforting taste of a Madhya Pradesh morning.'
+  };
+
+
+  /* ========================================================= */
+  /* CHHATTISGARH */
+  /* ========================================================= */
+
+  faraaData: Recipe = {
+
+    name: 'Faraa',
+
+    nativeName: 'फरा',
+
+    state: 'Chhattisgarh',
+
+    language: 'Hindi',
+
+    category: 'Traditional',
+
+    type: 'Vegetarian',
+
+    time: '40 minutes',
+
+    serves: '4 people',
+
+    difficulty: 'Medium',
+
+    description:
+      'A traditional steamed rice preparation with a soft and comforting texture.',
+
+    about:
+      'Faraa is a traditional Chhattisgarhi dish prepared primarily from rice flour.',
+
+    story:
+      'The dish reflects Chhattisgarh’s rice-based food traditions and preference for simple steamed preparations.',
+
+    ingredients: [
+      'Rice flour – 2 cups',
+      'Water – as required',
+      'Garlic – 4 cloves',
+      'Green chilli – 2',
+      'Coriander – handful'
+    ],
+
+    masala: [
+      'Cumin',
+      'Mustard seeds',
+      'Green chilli',
+      'Garlic',
+      'Salt'
+    ],
+
+    preparation: [
+      'Prepare a soft dough using rice flour.',
+      'Shape the dough into small pieces.',
+      'Steam until firm and cooked.',
+      'Prepare a garlic and spice tempering.',
+      'Add the steamed faraa.',
+      'Toss gently with the tempering.'
+    ],
+
+    serving:
+      'Serve warm with chutney or a light curry.',
+
+    chefTip:
+      'Steam the faraa gently so it remains soft rather than becoming dry.',
+
+    nativeCaption:
+      'फरा — छत्तीसगढ़ की चावल-आधारित परंपरा का सादा और सुकून भरा स्वाद।',
+
+    englishCaption:
+      'Faraa — the simple and comforting taste of Chhattisgarh’s rice-based tradition.'
+  };
 
 }

@@ -1,33 +1,976 @@
-<!-- Maharashtra -->
-<section class="recipes-section" *ngIf="state === 'maharashtra'">
+<div class="recipes-page">
 
-  <div class="recipe-card">
-
-    <div class="recipe-image">
-      🍲
-    </div>
-
-    <div class="recipe-content">
-
-      <span class="recipe-label">
-        MAHARASHTRA
-      </span>
-
-      <h2>
-        Misal Pav
-      </h2>
-
-      <p>
-        A popular Maharashtrian dish made with spicy sprouted
-        lentils, topped with farsan and served with pav.
-      </p>
-
-      <a href="/recipe-details?recipe=Misal%20Pav">
-        View Recipe
-      </a>
-
-    </div>
-
+  <div class="brand">
+    <h2>SwaadSetu 🍛</h2>
   </div>
 
-</section>
+
+  <!-- HEADER -->
+
+  <header class="recipes-header">
+
+    <span>TRADITIONAL RECIPES</span>
+
+    <h1>
+      Discover the Flavours
+    </h1>
+
+    <p>
+      Explore traditional dishes, ingredients and food stories from
+      {{ state | titlecase }}.
+    </p>
+
+  </header>
+
+
+  <!-- ========================= -->
+  <!-- ODISHA -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'odisha'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🍲
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          ODISHA
+        </span>
+
+        <h2>
+          Dalma
+        </h2>
+
+        <p>
+          A traditional Odia preparation made with dal,
+          seasonal vegetables and aromatic spices.
+        </p>
+
+        <a href="/recipe-details?recipe=Dalma">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🍚
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          ODISHA
+        </span>
+
+        <h2>
+          Pakhala Bhata
+        </h2>
+
+        <p>
+          A refreshing fermented rice dish traditionally
+          enjoyed during hot summer days.
+        </p>
+
+        <a href="/recipe-details?recipe=Pakhala%20Bhata">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🥣
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          ODISHA
+        </span>
+
+        <h2>
+          Dahi Pakhala
+        </h2>
+
+        <p>
+          A cooling combination of rice, curd and
+          traditional Odia seasonings.
+        </p>
+
+        <a href="/recipe-details?recipe=Dahi%20Pakhala">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- PUNJAB -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'punjab'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🌿
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          PUNJAB
+        </span>
+
+        <h2>
+          Sarson da Saag
+        </h2>
+
+        <p>
+          A classic Punjabi winter dish prepared with
+          mustard greens and aromatic spices.
+        </p>
+
+        <a href="/recipe-details?recipe=Sarson%20da%20Saag">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- RAJASTHAN -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'rajasthan'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🫓
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          RAJASTHAN
+        </span>
+
+        <h2>
+          Dal Baati Churma
+        </h2>
+
+        <p>
+          A famous Rajasthani combination of dal,
+          baked baati and sweet churma.
+        </p>
+
+        <a href="/recipe-details?recipe=Dal%20Baati%20Churma">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- UTTAR PRADESH -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'uttar-pradesh'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🍛
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          UTTAR PRADESH
+        </span>
+
+        <h2>
+          Awadhi Biryani
+        </h2>
+
+        <p>
+          Fragrant layered rice inspired by the refined
+          culinary traditions of Awadh.
+        </p>
+
+        <a href="/recipe-details?recipe=Awadhi%20Biryani">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- WEST BENGAL -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'west-bengal'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🐟
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          WEST BENGAL
+        </span>
+
+        <h2>
+          Macher Jhol
+        </h2>
+
+        <p>
+          A light Bengali fish curry with potatoes,
+          tomatoes and fragrant spices.
+        </p>
+
+        <a href="/recipe-details?recipe=Macher%20Jhol">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- BIHAR -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'bihar'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🥟
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          BIHAR
+        </span>
+
+        <h2>
+          Litti Chokha
+        </h2>
+
+        <p>
+          Roasted wheat balls filled with spiced sattu,
+          served with mashed vegetables.
+        </p>
+
+        <a href="/recipe-details?recipe=Litti%20Chokha">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- JHARKHAND -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'jharkhand'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🥞
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          JHARKHAND
+        </span>
+
+        <h2>
+          Dhuska
+        </h2>
+
+        <p>
+          A crispy traditional preparation made from
+          rice and lentils.
+        </p>
+
+        <a href="/recipe-details?recipe=Dhuska">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- TAMIL NADU -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'tamil-nadu'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🍚
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          TAMIL NADU
+        </span>
+
+        <h2>
+          Pongal
+        </h2>
+
+        <p>
+          A comforting rice and lentil dish seasoned
+          with ghee, pepper and cumin.
+        </p>
+
+        <a href="/recipe-details?recipe=Pongal">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- KERALA -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'kerala'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🥥
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          KERALA
+        </span>
+
+        <h2>
+          Avial
+        </h2>
+
+        <p>
+          A traditional Kerala vegetable preparation
+          with coconut and yogurt.
+        </p>
+
+        <a href="/recipe-details?recipe=Avial">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- KARNATAKA -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'karnataka'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🍛
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          KARNATAKA
+        </span>
+
+        <h2>
+          Bisi Bele Bath
+        </h2>
+
+        <p>
+          A warm rice and lentil dish cooked with
+          vegetables and aromatic spices.
+        </p>
+
+        <a href="/recipe-details?recipe=Bisi%20Bele%20Bath">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- MAHARASHTRA -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'maharashtra'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🌶️
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          MAHARASHTRA
+        </span>
+
+        <h2>
+          Misal Pav
+        </h2>
+
+        <p>
+          Spicy sprouted lentils topped with farsan
+          and served with pav.
+        </p>
+
+        <a href="/recipe-details?recipe=Misal%20Pav">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- GUJARAT -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'gujarat'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🟨
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          GUJARAT
+        </span>
+
+        <h2>
+          Dhokla
+        </h2>
+
+        <p>
+          A soft steamed Gujarati snack with a
+          light and balanced flavour.
+        </p>
+
+        <a href="/recipe-details?recipe=Dhokla">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- GOA -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'goa'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🐟
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          GOA
+        </span>
+
+        <h2>
+          Goan Fish Curry
+        </h2>
+
+        <p>
+          A coastal fish curry made with coconut,
+          spices and a touch of tanginess.
+        </p>
+
+        <a href="/recipe-details?recipe=Goan%20Fish%20Curry">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- ASSAM -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'assam'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🐟
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          ASSAM
+        </span>
+
+        <h2>
+          Masor Tenga
+        </h2>
+
+        <p>
+          A light and refreshing Assamese fish curry
+          with a naturally tangy flavour.
+        </p>
+
+        <a href="/recipe-details?recipe=Masor%20Tenga">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🌿
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          ASSAM
+        </span>
+
+        <h2>
+          Khar
+        </h2>
+
+        <p>
+          A distinctive traditional Assamese preparation
+          made with local ingredients.
+        </p>
+
+        <a href="/recipe-details?recipe=Khar">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- SIKKIM -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'sikkim'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🥟
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          SIKKIM
+        </span>
+
+        <h2>
+          Momos
+        </h2>
+
+        <p>
+          Steamed Himalayan dumplings filled with
+          vegetables and aromatic seasoning.
+        </p>
+
+        <a href="/recipe-details?recipe=Momos">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- NAGALAND -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'nagaland'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🍖
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          NAGALAND
+        </span>
+
+        <h2>
+          Smoked Pork with Bamboo Shoot
+        </h2>
+
+        <p>
+          A traditional Naga preparation combining
+          smoked pork and bamboo shoot.
+        </p>
+
+        <a href="/recipe-details?recipe=Smoked%20Pork%20with%20Bamboo%20Shoot">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- ARUNACHAL PRADESH -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'arunachal-pradesh'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🍜
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          ARUNACHAL PRADESH
+        </span>
+
+        <h2>
+          Thukpa
+        </h2>
+
+        <p>
+          A warm Himalayan noodle soup prepared
+          with vegetables and aromatic broth.
+        </p>
+
+        <a href="/recipe-details?recipe=Thukpa">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- MIZORAM -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'mizoram'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🥬
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          MIZORAM
+        </span>
+
+        <h2>
+          Bai
+        </h2>
+
+        <p>
+          A simple traditional Mizo vegetable preparation
+          made with fresh local ingredients.
+        </p>
+
+        <a href="/recipe-details?recipe=Bai">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- TRIPURA -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'tripura'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🍲
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          TRIPURA
+        </span>
+
+        <h2>
+          Mui Borok
+        </h2>
+
+        <p>
+          Traditional Tripuri food culture built around
+          local ingredients and distinctive flavours.
+        </p>
+
+        <a href="/recipe-details?recipe=Mui%20Borok">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- MADHYA PRADESH -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'madhya-pradesh'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🍋
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          MADHYA PRADESH
+        </span>
+
+        <h2>
+          Poha
+        </h2>
+
+        <p>
+          A light flattened-rice breakfast with onion,
+          peanuts and aromatic seasoning.
+        </p>
+
+        <a href="/recipe-details?recipe=Poha">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- CHHATTISGARH -->
+  <!-- ========================= -->
+
+  <section
+    class="recipes-section"
+    *ngIf="state === 'chhattisgarh'"
+  >
+
+    <div class="recipe-card">
+
+      <div class="recipe-image">
+        🍚
+      </div>
+
+      <div class="recipe-content">
+
+        <span class="recipe-label">
+          CHHATTISGARH
+        </span>
+
+        <h2>
+          Faraa
+        </h2>
+
+        <p>
+          A traditional steamed rice preparation
+          with a soft and comforting texture.
+        </p>
+
+        <a href="/recipe-details?recipe=Faraa">
+          View Recipe
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

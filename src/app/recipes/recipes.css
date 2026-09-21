@@ -209,4 +209,68 @@
   .recipe-image {
     height: 110px;
   }
+}.native-name {
+  color: #b75a2d;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.no-recipes {
+  grid-column: 1 / -1;
+  padding: 60px 30px;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.no-recipes h2 {
+  margin: 0 0 10px;
+  color: #292929;
+}
+
+.no-recipes p {
+  margin: 0 0 20px;
+  color: #777777;
+}
+
+.no-recipes a {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #d95a24;
+  color: #ffffff;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.recipes-footer {
+  padding: 28px 7%;
+  background: #ffffff;
+  border-top: 1px solid #eeeeee;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #999999;
+  font-size: 12px;
+}
+
+.recipes-footer strong {
+  color: #d95a24;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+
+  .recipes-footer {
+    padding: 25px 5%;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
 }

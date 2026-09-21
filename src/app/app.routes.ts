@@ -6,6 +6,11 @@ import { RecipeDetails } from './recipe-details/recipe-details';
 
 export const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'explore',
+    pathMatch: 'full'
+  },
+  {
     path: 'explore',
     component: Explore
   },
