@@ -1,0 +1,355 @@
+<div class="details-page">
+
+  <!-- HEADER -->
+  <header class="site-header">
+
+    <div class="site-logo">
+      SwaadSetu <span>🍛</span>
+    </div>
+
+    <a
+      routerLink="/explore"
+      class="home-link"
+    >
+      Explore India
+    </a>
+
+  </header>
+
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+
+    <a routerLink="/explore">
+      Explore
+    </a>
+
+    <span>›</span>
+
+    <span>
+      {{ recipeData.state }}
+    </span>
+
+    <span>›</span>
+
+    <span>
+      {{ recipeData.name }}
+    </span>
+
+  </div>
+
+
+  <!-- HERO -->
+  <section class="recipe-hero">
+
+    <div class="recipe-visual">
+
+      <div class="food-icon">
+        🍲
+      </div>
+
+      <span>
+        {{ recipeData.state | uppercase }} CUISINE
+      </span>
+
+    </div>
+
+
+    <div class="recipe-intro">
+
+      <span class="recipe-region">
+        {{ recipeData.state | uppercase }}
+        •
+        {{ recipeData.category | uppercase }}
+      </span>
+
+
+      <h1>
+        {{ recipeData.name }}
+      </h1>
+
+
+      <!-- REGIONAL NAME -->
+      <div class="native-name">
+        {{ recipeData.nativeName }}
+      </div>
+
+
+      <!-- LANGUAGE -->
+      <div class="language-label">
+        {{ recipeData.language }} • Regional Name
+      </div>
+
+
+      <p class="recipe-description">
+        {{ recipeData.description }}
+      </p>
+
+
+      <!-- META -->
+      <div class="recipe-meta">
+
+        <div class="meta-item">
+
+          <span>
+            PREPARATION
+          </span>
+
+          <strong>
+            {{ recipeData.time }}
+          </strong>
+
+        </div>
+
+
+        <div class="meta-item">
+
+          <span>
+            SERVES
+          </span>
+
+          <strong>
+            {{ recipeData.serves }}
+          </strong>
+
+        </div>
+
+
+        <div class="meta-item">
+
+          <span>
+            TYPE
+          </span>
+
+          <strong>
+            {{ recipeData.type }}
+          </strong>
+
+        </div>
+
+
+        <div class="meta-item">
+
+          <span>
+            DIFFICULTY
+          </span>
+
+          <strong>
+            {{ recipeData.difficulty }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="recipe-content">
+
+
+    <!-- ABOUT -->
+    <section class="content-section">
+
+      <h2>
+        About the Dish
+      </h2>
+
+      <p>
+        {{ recipeData.about }}
+      </p>
+
+    </section>
+
+
+    <!-- STORY -->
+    <section class="content-section">
+
+      <h2>
+        Recipe Story
+      </h2>
+
+      <p>
+        {{ recipeData.story }}
+      </p>
+
+    </section>
+
+
+    <!-- INGREDIENTS -->
+    <section class="content-section">
+
+      <h2>
+        Ingredients
+      </h2>
+
+
+      <h3>
+        Main Ingredients
+      </h3>
+
+
+      <ul class="ingredient-list">
+
+        @for (
+          ingredient of recipeData.ingredients;
+          track ingredient
+        ) {
+
+          <li>
+            {{ ingredient }}
+          </li>
+
+        }
+
+      </ul>
+
+
+      <h3>
+        Masala & Spices
+      </h3>
+
+
+      <ul class="ingredient-list">
+
+        @for (
+          masala of recipeData.masala;
+          track masala
+        ) {
+
+          <li>
+            {{ masala }}
+          </li>
+
+        }
+
+      </ul>
+
+    </section>
+
+
+    <!-- PREPARATION -->
+    <section class="content-section">
+
+      <h2>
+        Preparation
+      </h2>
+
+
+      <div class="preparation-list">
+
+        @for (
+          step of recipeData.preparation;
+          track step;
+          let i = $index
+        ) {
+
+          <div class="preparation-step">
+
+            <span class="step-number">
+              {{ i + 1 }}
+            </span>
+
+            <span>
+              {{ step }}
+            </span>
+
+          </div>
+
+        }
+
+      </div>
+
+    </section>
+
+
+    <!-- SERVING -->
+    <section class="content-section">
+
+      <h2>
+        Serving Suggestion
+      </h2>
+
+      <p>
+        {{ recipeData.serving }}
+      </p>
+
+    </section>
+
+
+    <!-- CHEF TIP -->
+    <section class="chef-tip">
+
+      <div class="tip-icon">
+        👨‍🍳
+      </div>
+
+
+      <div>
+
+        <h3>
+          Chef's Tip
+        </h3>
+
+        <p>
+          {{ recipeData.chefTip }}
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- REGIONAL FOOD CAPTION -->
+    <section class="regional-caption">
+
+      <div class="caption-icon">
+        ✨
+      </div>
+
+
+      <span class="caption-label">
+        A TASTE OF {{ recipeData.state | uppercase }}
+      </span>
+
+
+      <!-- STATE-SPECIFIC REGIONAL LANGUAGE -->
+      <h2>
+        {{ recipeData.nativeCaption }}
+      </h2>
+
+
+      <!-- ENGLISH TRANSLATION -->
+      <p class="caption-translation">
+        "{{ recipeData.englishCaption }}"
+      </p>
+
+
+      <!-- LANGUAGE NAME -->
+      <div class="caption-language">
+        {{ recipeData.language }}
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <strong>
+      SwaadSetu 🍛
+    </strong>
+
+    <span>
+      Discover India through its food.
+    </span>
+
+  </footer>
+
+</div>

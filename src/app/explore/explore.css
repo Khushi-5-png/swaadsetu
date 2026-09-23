@@ -1,0 +1,254 @@
+.explore-page {
+  min-height: 100vh;
+  background: #faf8f4;
+  color: #292929;
+}
+
+
+/* =========================
+   BRAND
+========================= */
+
+.brand {
+  height: 72px;
+  padding: 0 7%;
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand h2 {
+  margin: 0;
+  color: #d95a24;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.explore-header {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 55px 30px 35px;
+  text-align: center;
+}
+
+.explore-header span {
+  display: block;
+  color: #d95a24;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  margin-bottom: 10px;
+}
+
+.explore-header h1 {
+  margin: 0 0 10px;
+  color: #292929;
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.explore-header p {
+  margin: 0;
+  color: #777777;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   REGIONS GRID
+========================= */
+
+.regions-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 30px 20px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+
+/* =========================
+   REGION CARD
+========================= */
+
+.region-card {
+  min-height: 250px;
+  padding: 30px 24px;
+
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+
+  text-decoration: none;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.region-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   REGION ICON
+========================= */
+
+.region-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 42px;
+}
+
+
+/* =========================
+   REGION TITLE
+========================= */
+
+.region-card h2 {
+  margin: 0 0 8px;
+
+  color: #292929;
+
+  font-size: 21px;
+  font-weight: 700;
+}
+
+
+/* =========================
+   REGION DESCRIPTION
+========================= */
+
+.region-card p {
+  margin: 0 0 18px;
+
+  color: #777777;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+
+/* =========================
+   EXPLORE BUTTON
+========================= */
+
+.explore-button {
+  display: inline-block;
+
+  padding: 9px 17px;
+
+  background: #d95a24;
+  color: #ffffff;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease;
+}
+
+.region-card:hover .explore-button {
+  background: #bd4818;
+}
+
+
+/* =========================
+   CREATOR FOOTER
+========================= */
+
+.creator-footer {
+  text-align: center;
+
+  padding: 25px 20px 35px;
+
+  color: #999999;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 850px) {
+
+  .regions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 550px) {
+
+  .brand {
+    height: 65px;
+    padding: 0 5%;
+  }
+
+  .brand h2 {
+    font-size: 21px;
+  }
+
+  .explore-header {
+    padding: 40px 20px 28px;
+  }
+
+  .explore-header h1 {
+    font-size: 32px;
+  }
+
+  .regions-grid {
+    padding: 0 20px 15px;
+    grid-template-columns: 1fr;
+  }
+
+  .region-card {
+    min-height: 220px;
+  }
+
+  .creator-footer {
+    padding: 20px 15px 30px;
+  }
+
+}

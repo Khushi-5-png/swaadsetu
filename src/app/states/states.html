@@ -1,0 +1,645 @@
+<div class="states-page">
+
+  <!-- BRAND -->
+  <div class="brand">
+    <h2>SwaadSetu 🍛</h2>
+  </div>
+
+
+  <!-- HEADER -->
+  <header class="states-header">
+    <h1>Explore States</h1>
+
+    <p>
+      Choose a state to discover its traditional recipes and culinary stories.
+    </p>
+  </header>
+
+
+  <!-- ========================= -->
+  <!-- NORTH INDIA -->
+  <!-- ========================= -->
+
+  <section class="states-section" *ngIf="region === 'north'">
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🏔️
+      </div>
+
+      <div class="state-content">
+
+        <h2>Punjab</h2>
+
+        <p>
+          Rich flavours, hearty meals and traditional Punjabi cuisine.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'punjab' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🏜️
+      </div>
+
+      <div class="state-content">
+
+        <h2>Rajasthan</h2>
+
+        <p>
+          Royal recipes shaped by the traditions of the desert state.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'rajasthan' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🏛️
+      </div>
+
+      <div class="state-content">
+
+        <h2>Uttar Pradesh</h2>
+
+        <p>
+          Traditional Awadhi and North Indian flavours.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'uttar-pradesh' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- SOUTH INDIA -->
+  <!-- ========================= -->
+
+  <section class="states-section" *ngIf="region === 'south'">
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🌴
+      </div>
+
+      <div class="state-content">
+
+        <h2>Tamil Nadu</h2>
+
+        <p>
+          South Indian classics filled with traditional flavours.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'tamil-nadu' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🥥
+      </div>
+
+      <div class="state-content">
+
+        <h2>Kerala</h2>
+
+        <p>
+          Coconut-rich dishes inspired by Kerala's food traditions.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'kerala' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🌿
+      </div>
+
+      <div class="state-content">
+
+        <h2>Karnataka</h2>
+
+        <p>
+          Diverse recipes from Karnataka's rich culinary heritage.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'karnataka' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- EAST INDIA -->
+  <!-- ========================= -->
+
+  <section class="states-section" *ngIf="region === 'east'">
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🌾
+      </div>
+
+      <div class="state-content">
+
+        <h2>Odisha</h2>
+
+        <p>
+          Authentic Odia dishes and the traditional flavours of Odisha.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'odisha' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🐟
+      </div>
+
+      <div class="state-content">
+
+        <h2>West Bengal</h2>
+
+        <p>
+          Bengali cuisine known for fish, sweets and aromatic spices.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'west-bengal' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🥘
+      </div>
+
+      <div class="state-content">
+
+        <h2>Bihar</h2>
+
+        <p>
+          Traditional Bihari dishes with simple and distinctive flavours.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'bihar' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🌱
+      </div>
+
+      <div class="state-content">
+
+        <h2>Jharkhand</h2>
+
+        <p>
+          Regional recipes inspired by tribal and local food traditions.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'jharkhand' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- WEST INDIA -->
+  <!-- ========================= -->
+
+  <section class="states-section" *ngIf="region === 'west'">
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🌶️
+      </div>
+
+      <div class="state-content">
+
+        <h2>Maharashtra</h2>
+
+        <p>
+          Bold, spicy and diverse Maharashtrian food traditions.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'maharashtra' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🪁
+      </div>
+
+      <div class="state-content">
+
+        <h2>Gujarat</h2>
+
+        <p>
+          Vegetarian favourites and distinctive Gujarati flavours.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'gujarat' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🌊
+      </div>
+
+      <div class="state-content">
+
+        <h2>Goa</h2>
+
+        <p>
+          Coastal cuisine influenced by local and Portuguese traditions.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'goa' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- NORTHEAST INDIA -->
+  <!-- ========================= -->
+
+  <section class="states-section" *ngIf="region === 'northeast'">
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🌿
+      </div>
+
+      <div class="state-content">
+
+        <h2>Assam</h2>
+
+        <p>
+          Distinctive Assamese cuisine using fresh local ingredients.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'assam' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🏔️
+      </div>
+
+      <div class="state-content">
+
+        <h2>Sikkim</h2>
+
+        <p>
+          Himalayan flavours and traditional mountain cuisine.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'sikkim' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🌳
+      </div>
+
+      <div class="state-content">
+
+        <h2>Nagaland</h2>
+
+        <p>
+          Unique Naga cuisine featuring smoked and fermented flavours.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'nagaland' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🏞️
+      </div>
+
+      <div class="state-content">
+
+        <h2>Arunachal Pradesh</h2>
+
+        <p>
+          Traditional Himalayan and indigenous food culture.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'arunachal-pradesh' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🌺
+      </div>
+
+      <div class="state-content">
+
+        <h2>Mizoram</h2>
+
+        <p>
+          Simple, fresh and traditional Mizo preparations.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'mizoram' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🌴
+      </div>
+
+      <div class="state-content">
+
+        <h2>Tripura</h2>
+
+        <p>
+          Traditional Tripuri dishes rooted in local ingredients.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'tripura' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ========================= -->
+  <!-- CENTRAL INDIA -->
+  <!-- ========================= -->
+
+  <section class="states-section" *ngIf="region === 'central'">
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🌾
+      </div>
+
+      <div class="state-content">
+
+        <h2>Madhya Pradesh</h2>
+
+        <p>
+          Traditional dishes from the heart of India.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'madhya-pradesh' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="state-card">
+
+      <div class="state-image">
+        🌳
+      </div>
+
+      <div class="state-content">
+
+        <h2>Chhattisgarh</h2>
+
+        <p>
+          Authentic regional recipes rooted in local traditions.
+        </p>
+
+        <a
+          [routerLink]="['/recipes']"
+          [queryParams]="{ state: 'chhattisgarh' }"
+        >
+          View Recipes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- INVALID / EMPTY REGION -->
+
+  <section
+    class="empty-state"
+    *ngIf="
+      region !== 'north' &&
+      region !== 'south' &&
+      region !== 'east' &&
+      region !== 'west' &&
+      region !== 'northeast' &&
+      region !== 'central'
+    "
+  >
+
+    <h2>Region not found</h2>
+
+    <p>
+      Please return to Explore and choose a region.
+    </p>
+
+    <a routerLink="/explore">
+      Back to Explore
+    </a>
+
+  </section>
+
+</div>
