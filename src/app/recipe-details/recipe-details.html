@@ -89,6 +89,7 @@
       <!-- META -->
       <div class="recipe-meta">
 
+        <!-- PREPARATION TIME -->
         <div class="meta-item">
 
           <span>
@@ -102,19 +103,36 @@
         </div>
 
 
+        <!-- SERVING SELECTOR -->
         <div class="meta-item">
 
           <span>
             SERVES
           </span>
 
-          <strong>
-            {{ recipeData.serves }}
-          </strong>
+          <select
+            class="serving-select"
+            [(ngModel)]="selectedServings"
+          >
+
+            @for (
+              serving of servingOptions;
+              track serving
+            ) {
+
+              <option [ngValue]="serving">
+                {{ serving }}
+                {{ serving === 1 ? 'person' : 'people' }}
+              </option>
+
+            }
+
+          </select>
 
         </div>
 
 
+        <!-- TYPE -->
         <div class="meta-item">
 
           <span>
@@ -128,6 +146,7 @@
         </div>
 
 
+        <!-- DIFFICULTY -->
         <div class="meta-item">
 
           <span>
@@ -186,6 +205,14 @@
         Ingredients
       </h2>
 
+      <p class="serving-info">
+        Ingredients for
+        <strong>
+          {{ selectedServings }}
+          {{ selectedServings === 1 ? 'person' : 'people' }}
+        </strong>
+      </p>
+
 
       <h3>
         Main Ingredients
@@ -200,7 +227,7 @@
         ) {
 
           <li>
-            {{ ingredient }}
+            {{ getScaledIngredient(ingredient) }}
           </li>
 
         }
