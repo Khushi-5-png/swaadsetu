@@ -13,14 +13,18 @@ interface Recipe {
   time: string;
   serves: number;
   difficulty: string;
+
   description: string;
   about: string;
   story: string;
+
   ingredients: string[];
   masala: string[];
   preparation: string[];
+
   serving: string;
   chefTip: string;
+
   nativeCaption: string;
   englishCaption: string;
 }
@@ -42,136 +46,46 @@ export class RecipeDetails {
   recipeData!: Recipe;
 
 
-  // =========================================================
-  // SCALE INGREDIENT QUANTITY
-  // =========================================================
-
   getScaledIngredient(ingredient: string): string {
-
     if (!this.recipeData) {
       return ingredient;
     }
 
     const baseServings = this.recipeData.serves;
-
     const multiplier = this.selectedServings / baseServings;
 
-    /*
-     * Matches ingredients such as:
-     * Toor dal – 1 cup
-     * Potato – 2
-     * Curd – ½ cup
-     * Rice – 1/2 cup
-     */
-
-    const match = ingredient.match(
-      /^(.+?)\s*[–-]\s*(\d+(?:\.\d+)?|\d+\/\d+|½|¼|¾|⅓|⅔)(.*)$/
-    );
+    const match = ingredient.match(/^(.+?)\s*[–-]\s*(\d+(?:\.\d+)?|\d+\/\d+|½|¼|¾|⅓|⅔)(.*)$/);
 
     if (!match) {
       return ingredient;
     }
 
     const name = match[1];
-
     const quantity = match[2];
-
     const unit = match[3];
 
     let numericQuantity: number;
 
     switch (quantity) {
-
-      case '½':
-        numericQuantity = 0.5;
-        break;
-
-      case '¼':
-        numericQuantity = 0.25;
-        break;
-
-      case '¾':
-        numericQuantity = 0.75;
-        break;
-
-      case '⅓':
-        numericQuantity = 1 / 3;
-        break;
-
-      case '⅔':
-        numericQuantity = 2 / 3;
-        break;
-
+      case '½': numericQuantity = 0.5; break;
+      case '¼': numericQuantity = 0.25; break;
+      case '¾': numericQuantity = 0.75; break;
+      case '⅓': numericQuantity = 1 / 3; break;
+      case '⅔': numericQuantity = 2 / 3; break;
       default:
-
         if (quantity.includes('/')) {
-
           const parts = quantity.split('/');
-
-          numericQuantity =
-            Number(parts[0]) / Number(parts[1]);
-
+          numericQuantity = Number(parts[0]) / Number(parts[1]);
         } else {
-
           numericQuantity = Number(quantity);
-
         }
-
-        break;
     }
 
-    const scaledQuantity =
-      numericQuantity * multiplier;
+    const scaledQuantity = numericQuantity * multiplier;
 
-    return `${name} – ${Number(
-      scaledQuantity.toFixed(2)
-    )}${unit}`;
+    return `${name} – ${Number(scaledQuantity.toFixed(2))}${unit}`;
   }
 
-
-  // =========================================================
-  // ADJUST COOKING TIME BASED ON SERVINGS
-  // =========================================================
-
-  getAdjustedTime(time: string): string {
-
-    if (!this.recipeData) {
-      return time;
-    }
-
-    const match = time.match(/(\d+)/);
-
-    if (!match) {
-      return time;
-    }
-
-    const baseMinutes = Number(match[1]);
-
-    const baseServings = this.recipeData.serves;
-
-    const difference =
-      this.selectedServings - baseServings;
-
-    /*
-     * Cooking time does not increase exactly
-     * in the same ratio as ingredients.
-     *
-     * We approximately add 5 minutes for every
-     * serving above the original serving size.
-     */
-
-    const adjustedMinutes = Math.max(
-      10,
-      baseMinutes + difference * 5
-    );
-
-    return `${adjustedMinutes} minutes`;
-  }
-
-
-  // =========================================================
-  // CONSTRUCTOR
-  // =========================================================
 
   constructor(private route: ActivatedRoute) {
 
@@ -272,11 +186,7 @@ export class RecipeDetails {
         case 'Poha':
           this.recipeData = this.pohaData;
           break;
-          
-        case 'Machha Besara':
-  this.recipeData = this.machhaBesaraData;
-  break;
-  
+
         case 'Faraa':
           this.recipeData = this.faraaData;
           break;
@@ -287,23 +197,32 @@ export class RecipeDetails {
       }
 
     });
+
   }
 
 
-  // =========================================================
-  // ODISHA
-  // =========================================================
+  /* ========================================================= */
+  /* ODISHA */
+  /* ========================================================= */
 
   dalmaData: Recipe = {
 
     name: 'Dalma',
+
     nativeName: 'ଡାଲମା',
+
     state: 'Odisha',
+
     language: 'Odia',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '45 minutes',
+
     serves: 4,
+
     difficulty: 'Easy',
 
     description:
@@ -360,13 +279,21 @@ export class RecipeDetails {
   pakhalaData: Recipe = {
 
     name: 'Pakhala Bhata',
+
     nativeName: 'ପଖାଳ ଭାତ',
+
     state: 'Odisha',
+
     language: 'Odia',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '15 minutes',
+
     serves: 2,
+
     difficulty: 'Easy',
 
     description:
@@ -420,13 +347,21 @@ export class RecipeDetails {
   dahiPakhalaData: Recipe = {
 
     name: 'Dahi Pakhala',
+
     nativeName: 'ଦହି ପଖାଳ',
+
     state: 'Odisha',
+
     language: 'Odia',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '15 minutes',
+
     serves: 2,
+
     difficulty: 'Easy',
 
     description:
@@ -475,20 +410,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // PUNJAB
-  // =========================================================
+  /* ========================================================= */
+  /* PUNJAB */
+  /* ========================================================= */
 
   sarsonSaagData: Recipe = {
 
     name: 'Sarson da Saag',
+
     nativeName: 'ਸਰੋਂ ਦਾ ਸਾਗ',
+
     state: 'Punjab',
+
     language: 'Punjabi',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '60 minutes',
+
     serves: 4,
+
     difficulty: 'Medium',
 
     description:
@@ -540,20 +483,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // RAJASTHAN
-  // =========================================================
+  /* ========================================================= */
+  /* RAJASTHAN */
+  /* ========================================================= */
 
   dalBaatiChurmaData: Recipe = {
 
     name: 'Dal Baati Churma',
+
     nativeName: 'दाल बाटी चूरमा',
+
     state: 'Rajasthan',
+
     language: 'Hindi',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '75 minutes',
+
     serves: 4,
+
     difficulty: 'Medium',
 
     description:
@@ -604,20 +555,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // UTTAR PRADESH
-  // =========================================================
+  /* ========================================================= */
+  /* UTTAR PRADESH */
+  /* ========================================================= */
 
   awadhiBiryaniData: Recipe = {
 
     name: 'Awadhi Biryani',
+
     nativeName: 'अवधी बिरयानी',
+
     state: 'Uttar Pradesh',
+
     language: 'Hindi',
+
     category: 'Traditional',
+
     type: 'Non-Vegetarian',
+
     time: '90 minutes',
+
     serves: 4,
+
     difficulty: 'Medium',
 
     description:
@@ -669,20 +628,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // WEST BENGAL
-  // =========================================================
+  /* ========================================================= */
+  /* WEST BENGAL */
+  /* ========================================================= */
 
   macherJholData: Recipe = {
 
     name: 'Macher Jhol',
+
     nativeName: 'মাছের ঝোল',
+
     state: 'West Bengal',
+
     language: 'Bengali',
+
     category: 'Traditional',
+
     type: 'Non-Vegetarian',
+
     time: '40 minutes',
+
     serves: 4,
+
     difficulty: 'Easy',
 
     description:
@@ -733,20 +700,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // BIHAR
-  // =========================================================
+  /* ========================================================= */
+  /* BIHAR */
+  /* ========================================================= */
 
   littiChokhaData: Recipe = {
 
     name: 'Litti Chokha',
+
     nativeName: 'लिट्टी चोखा',
+
     state: 'Bihar',
+
     language: 'Hindi',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '60 minutes',
+
     serves: 4,
+
     difficulty: 'Medium',
 
     description:
@@ -798,20 +773,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // JHARKHAND
-  // =========================================================
+  /* ========================================================= */
+  /* JHARKHAND */
+  /* ========================================================= */
 
   dhuskaData: Recipe = {
 
     name: 'Dhuska',
+
     nativeName: 'धुस्का',
+
     state: 'Jharkhand',
+
     language: 'Hindi',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '40 minutes',
+
     serves: 4,
+
     difficulty: 'Easy',
 
     description:
@@ -860,20 +843,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // TAMIL NADU
-  // =========================================================
+  /* ========================================================= */
+  /* TAMIL NADU */
+  /* ========================================================= */
 
   pongalData: Recipe = {
 
     name: 'Pongal',
+
     nativeName: 'பொங்கல்',
+
     state: 'Tamil Nadu',
+
     language: 'Tamil',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '35 minutes',
+
     serves: 4,
+
     difficulty: 'Easy',
 
     description:
@@ -924,20 +915,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // KERALA
-  // =========================================================
+  /* ========================================================= */
+  /* KERALA */
+  /* ========================================================= */
 
   avialData: Recipe = {
 
     name: 'Avial',
+
     nativeName: 'അവിയൽ',
+
     state: 'Kerala',
+
     language: 'Malayalam',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '40 minutes',
+
     serves: 4,
+
     difficulty: 'Easy',
 
     description:
@@ -987,20 +986,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // KARNATAKA
-  // =========================================================
+  /* ========================================================= */
+  /* KARNATAKA */
+  /* ========================================================= */
 
   bisiBeleBathData: Recipe = {
 
     name: 'Bisi Bele Bath',
+
     nativeName: 'ಬಿಸಿ ಬೇಳೆ ಬಾತ್',
+
     state: 'Karnataka',
+
     language: 'Kannada',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '50 minutes',
+
     serves: 4,
+
     difficulty: 'Medium',
 
     description:
@@ -1051,20 +1058,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // MAHARASHTRA
-  // =========================================================
+  /* ========================================================= */
+  /* MAHARASHTRA */
+  /* ========================================================= */
 
   misalPavData: Recipe = {
 
     name: 'Misal Pav',
+
     nativeName: 'मिसळ पाव',
+
     state: 'Maharashtra',
+
     language: 'Marathi',
+
     category: 'Street Food',
+
     type: 'Vegetarian',
+
     time: '45 minutes',
+
     serves: 4,
+
     difficulty: 'Medium',
 
     description:
@@ -1117,20 +1132,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // GUJARAT
-  // =========================================================
+  /* ========================================================= */
+  /* GUJARAT */
+  /* ========================================================= */
 
   dhoklaData: Recipe = {
 
     name: 'Dhokla',
+
     nativeName: 'ઢોકળા',
+
     state: 'Gujarat',
+
     language: 'Gujarati',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '35 minutes',
+
     serves: 4,
+
     difficulty: 'Easy',
 
     description:
@@ -1181,20 +1204,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // GOA
-  // =========================================================
+  /* ========================================================= */
+  /* GOA */
+  /* ========================================================= */
 
   goanFishCurryData: Recipe = {
 
     name: 'Goan Fish Curry',
+
     nativeName: 'आंबट तिखट गोवन फिश करी',
+
     state: 'Goa',
+
     language: 'Konkani',
+
     category: 'Coastal',
+
     type: 'Non-Vegetarian',
+
     time: '40 minutes',
+
     serves: 4,
+
     difficulty: 'Medium',
 
     description:
@@ -1245,20 +1276,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // ASSAM
-  // =========================================================
+  /* ========================================================= */
+  /* ASSAM */
+  /* ========================================================= */
 
   masorTengaData: Recipe = {
 
     name: 'Masor Tenga',
+
     nativeName: 'মাছৰ টেঙা',
+
     state: 'Assam',
+
     language: 'Assamese',
+
     category: 'Traditional',
+
     type: 'Non-Vegetarian',
+
     time: '40 minutes',
+
     serves: 4,
+
     difficulty: 'Easy',
 
     description:
@@ -1311,13 +1350,21 @@ export class RecipeDetails {
   kharData: Recipe = {
 
     name: 'Khar',
+
     nativeName: 'খাৰ',
+
     state: 'Assam',
+
     language: 'Assamese',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '35 minutes',
+
     serves: 4,
+
     difficulty: 'Easy',
 
     description:
@@ -1365,20 +1412,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // SIKKIM
-  // =========================================================
+  /* ========================================================= */
+  /* SIKKIM */
+  /* ========================================================= */
 
   momosData: Recipe = {
 
     name: 'Momos',
+
     nativeName: 'मोमो',
+
     state: 'Sikkim',
+
     language: 'Nepali',
+
     category: 'Himalayan',
+
     type: 'Vegetarian',
+
     time: '50 minutes',
+
     serves: 4,
+
     difficulty: 'Medium',
 
     description:
@@ -1429,20 +1484,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // NAGALAND
-  // =========================================================
+  /* ========================================================= */
+  /* NAGALAND */
+  /* ========================================================= */
 
   smokedPorkData: Recipe = {
 
     name: 'Smoked Pork with Bamboo Shoot',
+
     nativeName: 'आखुनी के साथ स्मोक्ड पोर्क',
+
     state: 'Nagaland',
+
     language: 'Naga',
+
     category: 'Traditional',
+
     type: 'Non-Vegetarian',
+
     time: '90 minutes',
+
     serves: 4,
+
     difficulty: 'Medium',
 
     description:
@@ -1491,20 +1554,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // ARUNACHAL PRADESH
-  // =========================================================
+  /* ========================================================= */
+  /* ARUNACHAL PRADESH */
+  /* ========================================================= */
 
   thukpaData: Recipe = {
 
     name: 'Thukpa',
+
     nativeName: 'थुकपा',
+
     state: 'Arunachal Pradesh',
+
     language: 'Tibetan',
+
     category: 'Himalayan',
+
     type: 'Vegetarian',
+
     time: '45 minutes',
+
     serves: 4,
+
     difficulty: 'Easy',
 
     description:
@@ -1555,20 +1626,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // MIZORAM
-  // =========================================================
+  /* ========================================================= */
+  /* MIZORAM */
+  /* ========================================================= */
 
   baiData: Recipe = {
 
     name: 'Bai',
+
     nativeName: 'Bai',
+
     state: 'Mizoram',
+
     language: 'Mizo',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '40 minutes',
+
     serves: 4,
+
     difficulty: 'Easy',
 
     description:
@@ -1616,20 +1695,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // TRIPURA
-  // =========================================================
+  /* ========================================================= */
+  /* TRIPURA */
+  /* ========================================================= */
 
   muiBorokData: Recipe = {
 
     name: 'Mui Borok',
+
     nativeName: 'মুই বৰক',
+
     state: 'Tripura',
+
     language: 'Kokborok',
+
     category: 'Traditional',
+
     type: 'Non-Vegetarian',
+
     time: '50 minutes',
+
     serves: 4,
+
     difficulty: 'Medium',
 
     description:
@@ -1678,20 +1765,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // MADHYA PRADESH
-  // =========================================================
+  /* ========================================================= */
+  /* MADHYA PRADESH */
+  /* ========================================================= */
 
   pohaData: Recipe = {
 
     name: 'Poha',
+
     nativeName: 'पोहा',
+
     state: 'Madhya Pradesh',
+
     language: 'Hindi',
+
     category: 'Breakfast',
+
     type: 'Vegetarian',
+
     time: '20 minutes',
+
     serves: 2,
+
     difficulty: 'Easy',
 
     description:
@@ -1742,117 +1837,28 @@ export class RecipeDetails {
   };
 
 
-  // =========================================================
-  // CHHATTISGARH
-  // =========================================================
+  /* ========================================================= */
+  /* CHHATTISGARH */
+  /* ========================================================= */
 
-  faraaData: Recipe = {  machhaBesaraData: Recipe = {
-
-    name: 'Machha Besara',
-
-    nativeName: 'ମାଛ ବେସର',
-
-    state: 'Odisha',
-
-    language: 'Odia',
-
-    category: 'Traditional',
-
-    type: 'Non-Vegetarian',
-
-    time: '40 minutes',
-
-    serves: 4,
-
-    difficulty: 'Medium',
-
-    description:
-      'A traditional Odia fish curry prepared with mustard paste, spices and vegetables.',
-
-    about:
-      'Machha Besara is a classic Odia fish preparation known for its distinctive mustard flavour and light, aromatic gravy.',
-
-    story:
-      'Mustard-based preparations are an important part of traditional Odia cuisine. Machha Besara is commonly enjoyed with steamed rice as a comforting everyday meal.',
-
-    ingredients: [
-
-      'Fish pieces – 500 g',
-
-      'Potato – 2',
-
-      'Tomato – 1',
-
-      'Mustard seeds – 2 tbsp',
-
-      'Garlic – 5 cloves',
-
-      'Turmeric powder – 1 tsp',
-
-      'Water – as required',
-
-      'Salt – to taste',
-
-      'Mustard oil – 3 tbsp'
-
-    ],
-
-    masala: [
-
-      'Cumin seeds – 1 tsp',
-
-      'Red chilli powder – 1 tsp',
-
-      'Green chilli – 2',
-
-      'Pancha phutana – 1 tsp'
-
-    ],
-
-    preparation: [
-
-      'Clean the fish pieces and marinate them with turmeric and salt.',
-
-      'Make a smooth paste using mustard seeds, garlic and green chilli.',
-
-      'Heat mustard oil in a pan and lightly fry the fish pieces. Remove and keep aside.',
-
-      'Add pancha phutana and allow it to splutter.',
-
-      'Add potatoes and sauté until they are lightly cooked.',
-
-      'Add the mustard paste, turmeric and red chilli powder. Cook for a few minutes.',
-
-      'Add water and simmer until the potatoes are cooked.',
-
-      'Add the fried fish pieces and cook gently for another 8–10 minutes.',
-
-      'Serve hot with steamed rice.'
-
-    ],
-
-    serving:
-      'Serve hot with steamed rice.',
-
-    chefTip:
-      'Do not overcook the mustard paste, as excessive cooking can make the mustard taste bitter.',
-
-    nativeCaption:
-      'ମାଛ ବେସର — ଓଡ଼ିଆ ଘରର ପାରମ୍ପରିକ ସ୍ୱାଦ',
-
-    englishCaption:
-      'A traditional taste from an Odia kitchen.',
-
-  },
+  faraaData: Recipe = {
 
     name: 'Faraa',
+
     nativeName: 'फरा',
+
     state: 'Chhattisgarh',
+
     language: 'Hindi',
+
     category: 'Traditional',
+
     type: 'Vegetarian',
+
     time: '40 minutes',
+
     serves: 4,
+
     difficulty: 'Medium',
 
     description:
@@ -1903,3 +1909,5 @@ export class RecipeDetails {
   };
 
 }
+
+
