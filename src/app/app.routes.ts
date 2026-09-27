@@ -1,8 +1,4 @@
 import { Routes } from '@angular/router';
-import { Explore } from './explore/explore';
-import { States } from './states/states';
-import { Recipes } from './recipes/recipes';
-import { RecipeDetails } from './recipe-details/recipe-details';
 
 export const routes: Routes = [
   {
@@ -10,20 +6,16 @@ export const routes: Routes = [
     redirectTo: 'explore',
     pathMatch: 'full'
   },
+
   {
     path: 'explore',
-    component: Explore
+    loadComponent: () =>
+      import('./explore/explore').then(m => m.Explore)
   },
+
   {
-    path: 'states',
-    component: States
-  },
-  {
-    path: 'recipes',
-    component: Recipes
-  },
-  {
-    path: 'recipe-details',
-    component: RecipeDetails
+    path: 'ai-chef',
+    loadComponent: () =>
+      import('./ai-chef/ai-chef').then(m => m.AiChef)
   }
 ];

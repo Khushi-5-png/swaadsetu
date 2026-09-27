@@ -85,7 +85,30 @@ export class RecipeDetails {
 
     return `${name} – ${Number(scaledQuantity.toFixed(2))}${unit}`;
   }
+getAdjustedTime(time: string): string {
 
+  if (!this.recipeData) {
+    return time;
+  }
+
+  const match = time.match(/(\d+)/);
+
+  if (!match) {
+    return time;
+  }
+
+  const baseMinutes = Number(match[1]);
+  const baseServings = this.recipeData.serves;
+
+  const difference = this.selectedServings - baseServings;
+
+  const adjustedMinutes = Math.max(
+    10,
+    baseMinutes + difference * 5
+  );
+
+  return `${adjustedMinutes} minutes`;
+}
 
   constructor(private route: ActivatedRoute) {
 
