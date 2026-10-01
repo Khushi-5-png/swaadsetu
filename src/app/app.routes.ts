@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+
   {
     path: '',
     redirectTo: 'explore',
@@ -14,8 +15,27 @@ export const routes: Routes = [
   },
 
   {
+    path: 'states',
+    loadComponent: () =>
+      import('./states/states').then(m => m.States)
+  },
+
+  {
+    path: 'recipes',
+    loadComponent: () =>
+      import('./recipes/recipes').then(m => m.Recipes)
+  },
+
+  {
+    path: 'recipe-details',
+    loadComponent: () =>
+      import('./recipe-details/recipe-details').then(m => m.RecipeDetails)
+  },
+
+  {
     path: 'ai-chef',
     loadComponent: () =>
       import('./ai-chef/ai-chef').then(m => m.AiChef)
   }
+
 ];
