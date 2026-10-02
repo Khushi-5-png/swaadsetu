@@ -6,52 +6,19 @@
 
   <div class="chat-box">
 
-    <div class="messages">
+    <div class="ai-content">
 
-      @for (message of messages; track $index) {
+      <div class="ai-icon">👨‍🍳</div>
 
-        <div
-          class="chat-message"
-          [class.user-message]="message.sender === 'user'"
-          [class.ai-message]="message.sender === 'ai'"
-        >
+      <h2>Ask ChatGPT about cooking</h2>
 
-          <strong>
-            {{ message.sender === 'user' ? 'You' : 'AI Chef' }}:
-          </strong>
+      <p>
+        Get recipe ideas, cooking tips, ingredient substitutions,
+        preparation methods and more.
+      </p>
 
-          <p>{{ message.text }}</p>
-
-        </div>
-
-      }
-
-      @if (loading) {
-
-        <div class="chat-message ai-message">
-          <strong>AI Chef:</strong>
-          <p>Thinking... 🤔</p>
-        </div>
-
-      }
-
-    </div>
-
-    <div class="chat-input">
-
-      <input
-        type="text"
-        [(ngModel)]="userMessage"
-        (keyup.enter)="sendMessage()"
-        placeholder="Ask AI Chef anything..."
-        [disabled]="loading"
-      />
-
-      <button
-        (click)="sendMessage()"
-        [disabled]="loading || !userMessage.trim()"
-      >
-        {{ loading ? 'Thinking...' : 'Send' }}
+      <button (click)="openChatGPT()">
+        Open ChatGPT
       </button>
 
     </div>

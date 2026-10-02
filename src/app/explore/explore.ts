@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './explore.css'
 })
 export class Explore {
+
+  openChatGPT() {
+    window.open('https://chatgpt.com/', '_blank');
+  }
+
 }

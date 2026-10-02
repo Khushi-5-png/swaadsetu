@@ -39,6 +39,8 @@
   </div>
 
 
+
+  
   <!-- HERO -->
   <section class="recipe-hero">
 
@@ -65,24 +67,53 @@
 
 
       <h1>
-        {{ recipeData.name }}
-      </h1>
+  {{ getTranslated('name') }}
+</h1>
 
 
       <!-- REGIONAL NAME -->
       <div class="native-name">
-        {{ recipeData.nativeName }}
+        {{ getTranslated('nativeName') }}
       </div>
 
 
-      <!-- LANGUAGE -->
+      <!-- LANGUAGE SELECTOR -->
+      <div class="language-selector">
+
+        <label for="language">
+          Language
+        </label>
+
+        <select
+          id="language"
+          [(ngModel)]="selectedLanguage"
+          (ngModelChange)="setLanguage($event)"
+        >
+
+          @for (
+            language of languageOptions;
+            track language
+          ) {
+
+            <option [value]="language">
+              {{ language }}
+            </option>
+
+          }
+
+        </select>
+
+      </div>
+
+
+      <!-- CURRENT RECIPE LANGUAGE -->
       <div class="language-label">
-        {{ recipeData.language }} • Regional Name
+        Regional language: {{ selectedLanguage }}
       </div>
 
 
       <p class="recipe-description">
-        {{ recipeData.description }}
+       {{ getTranslated('description') }}
       </p>
 
 
@@ -178,8 +209,9 @@
       </h2>
 
       <p>
-        {{ recipeData.about }}
-      </p>
+  {{ getTranslated('about') }}
+</p>
+
 
     </section>
 
@@ -191,9 +223,9 @@
         Recipe Story
       </h2>
 
-      <p>
-        {{ recipeData.story }}
-      </p>
+      <<p>
+  {{ getTranslated('story') }}
+</p>
 
     </section>
 
@@ -206,7 +238,7 @@
       </h2>
 
       <p class="serving-info">
-        Ingredients for
+       {{ selectedLanguage === 'Hindi' ? 'सामग्री' : 'Ingredients for' }}
         <strong>
           {{ selectedServings }}
           {{ selectedServings === 1 ? 'person' : 'people' }}
@@ -222,7 +254,7 @@
       <ul class="ingredient-list">
 
         @for (
-          ingredient of recipeData.ingredients;
+           ingredient of getTranslated('ingredients');
           track ingredient
         ) {
 
@@ -243,7 +275,7 @@
       <ul class="ingredient-list">
 
         @for (
-          masala of recipeData.masala;
+         masala of getTranslated('masala');
           track masala
         ) {
 
@@ -268,11 +300,11 @@
 
       <div class="preparation-list">
 
-        @for (
-          step of recipeData.preparation;
-          track step;
-          let i = $index
-        ) {
+       @for (
+  step of getTranslated('preparation');
+  track step;
+  let i = $index
+) {
 
           <div class="preparation-step">
 
@@ -301,7 +333,7 @@
       </h2>
 
       <p>
-        {{ recipeData.serving }}
+        {{ getTranslated('serving') }}
       </p>
 
     </section>
@@ -345,19 +377,19 @@
 
       <!-- STATE-SPECIFIC REGIONAL LANGUAGE -->
       <h2>
-        {{ recipeData.nativeCaption }}
+      {{ getTranslated('nativeCaption') }}
       </h2>
 
 
       <!-- ENGLISH TRANSLATION -->
       <p class="caption-translation">
-        "{{ recipeData.englishCaption }}"
+        {{ getTranslated('englishCaption') }}
       </p>
 
 
-      <!-- LANGUAGE NAME -->
+      <!-- SELECTED LANGUAGE -->
       <div class="caption-language">
-        {{ recipeData.language }}
+        Selected language: {{ selectedLanguage }}
       </div>
 
     </section>

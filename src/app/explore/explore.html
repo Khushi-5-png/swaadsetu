@@ -5,7 +5,6 @@
     <h2>SwaadSetu 🍛</h2>
   </div>
 
-
   <!-- HEADER -->
   <header class="explore-header">
 
@@ -24,166 +23,177 @@
   </header>
 
 
-  <!-- REGIONS -->
-  <section class="regions-grid">
+  <!-- MAIN CONTENT -->
+  <div class="explore-content">
+
+    <!-- REGIONS -->
+    <section class="regions-grid">
+
+      <!-- NORTH INDIA -->
+      <a href="/states?region=north" class="region-card">
+
+        <div class="region-icon">
+          🏔️
+        </div>
+
+        <h2>
+          North India
+        </h2>
+
+        <p>
+          Punjab • Rajasthan • Uttar Pradesh
+        </p>
+
+        <span class="explore-button">
+          Explore Region
+        </span>
+
+      </a>
 
 
-    <!-- NORTH INDIA -->
-    <a
-      href="/states?region=north"
-      class="region-card"
-    >
+      <!-- SOUTH INDIA -->
+      <a href="/states?region=south" class="region-card">
 
-      <div class="region-icon">
-        🏔️
+        <div class="region-icon">
+          🌴
+        </div>
+
+        <h2>
+          South India
+        </h2>
+
+        <p>
+          Tamil Nadu • Kerala • Karnataka
+        </p>
+
+        <span class="explore-button">
+          Explore Region
+        </span>
+
+      </a>
+
+
+      <!-- EAST INDIA -->
+      <a href="/states?region=east" class="region-card">
+
+        <div class="region-icon">
+          🌾
+        </div>
+
+        <h2>
+          East India
+        </h2>
+
+        <p>
+          Odisha • West Bengal • Bihar • Jharkhand
+        </p>
+
+        <span class="explore-button">
+          Explore Region
+        </span>
+
+      </a>
+
+
+      <!-- WEST INDIA -->
+      <a href="/states?region=west" class="region-card">
+
+        <div class="region-icon">
+          🌊
+        </div>
+
+        <h2>
+          West India
+        </h2>
+
+        <p>
+          Maharashtra • Gujarat • Goa
+        </p>
+
+        <span class="explore-button">
+          Explore Region
+        </span>
+
+      </a>
+
+
+      <!-- NORTHEAST INDIA -->
+      <a href="/states?region=northeast" class="region-card">
+
+        <div class="region-icon">
+          🌿
+        </div>
+
+        <h2>
+          Northeast India
+        </h2>
+
+        <p>
+          Assam • Sikkim • Nagaland • Arunachal Pradesh • Mizoram • Tripura
+        </p>
+
+        <span class="explore-button">
+          Explore Region
+        </span>
+
+      </a>
+
+
+      <!-- CENTRAL INDIA -->
+      <a href="/states?region=central" class="region-card">
+
+        <div class="region-icon">
+          🏞️
+        </div>
+
+        <h2>
+          Central India
+        </h2>
+
+        <p>
+          Madhya Pradesh • Chhattisgarh
+        </p>
+
+        <span class="explore-button">
+          Explore Region
+        </span>
+
+      </a>
+
+    </section>
+
+
+    <!-- AI CHEF SIDE PANEL -->
+    <aside class="ai-chef-side">
+
+      <div class="ai-chef-icon">
+        👨‍🍳
       </div>
 
       <h2>
-        North India
+        AI Chef
       </h2>
 
       <p>
-        Punjab • Rajasthan • Uttar Pradesh
+        Need help choosing a dish or cooking a recipe?
       </p>
-
-      <span class="explore-button">
-        Explore Region
-      </span>
-
-    </a>
-
-
-    <!-- SOUTH INDIA -->
-    <a
-      href="/states?region=south"
-      class="region-card"
-    >
-
-      <div class="region-icon">
-        🌴
-      </div>
-
-      <h2>
-        South India
-      </h2>
 
       <p>
-        Tamil Nadu • Kerala • Karnataka
+        Ask ChatGPT for recipe ideas, cooking tips, ingredient substitutions and more.
       </p>
 
-      <span class="explore-button">
-        Explore Region
-      </span>
+      <button (click)="openChatGPT()">
+        Open ChatGPT
+      </button>
 
-    </a>
+    </aside>
 
-
-    <!-- EAST INDIA -->
-    <a
-      href="/states?region=east"
-      class="region-card"
-    >
-
-      <div class="region-icon">
-        🌾
-      </div>
-
-      <h2>
-        East India
-      </h2>
-
-      <p>
-        Odisha • West Bengal • Bihar • Jharkhand
-      </p>
-
-      <span class="explore-button">
-        Explore Region
-      </span>
-
-    </a>
-
-
-    <!-- WEST INDIA -->
-    <a
-      href="/states?region=west"
-      class="region-card"
-    >
-
-      <div class="region-icon">
-        🌊
-      </div>
-
-      <h2>
-        West India
-      </h2>
-
-      <p>
-        Maharashtra • Gujarat • Goa
-      </p>
-
-      <span class="explore-button">
-        Explore Region
-      </span>
-
-    </a>
-
-
-    <!-- NORTHEAST INDIA -->
-    <a
-      href="/states?region=northeast"
-      class="region-card"
-    >
-
-      <div class="region-icon">
-        🌿
-      </div>
-
-      <h2>
-        Northeast India
-      </h2>
-
-      <p>
-        Assam • Sikkim • Nagaland • Arunachal Pradesh • Mizoram • Tripura
-      </p>
-
-      <span class="explore-button">
-        Explore Region
-      </span>
-
-    </a>
-
-
-    <!-- CENTRAL INDIA -->
-    <a
-      href="/states?region=central"
-      class="region-card"
-    >
-
-      <div class="region-icon">
-        🏞️
-      </div>
-
-      <h2>
-        Central India
-      </h2>
-
-      <p>
-        Madhya Pradesh • Chhattisgarh
-      </p>
-
-      <span class="explore-button">
-        Explore Region
-      </span>
-
-    </a>
-
-  </section>
+  </div>
 
 
   <!-- CREATOR CREDIT -->
   <footer class="creator-footer">
     Created by Khushi Sonar
   </footer>
-
 
 </div>

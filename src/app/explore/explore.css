@@ -1,93 +1,111 @@
 .explore-page {
   min-height: 100vh;
-  background: #faf8f4;
-  color: #292929;
+  background: #f7f5ef;
+  color: #24352b;
+  font-family: "Trebuchet MS", Arial, sans-serif;
 }
-
 
 /* =========================
    BRAND
 ========================= */
 
 .brand {
-  height: 72px;
+  height: 92px;
   padding: 0 7%;
   background: #ffffff;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #e5e1d8;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .brand h2 {
   margin: 0;
-  color: #d95a24;
-  font-size: 24px;
-  font-weight: 700;
-}
 
+  color: #24523a;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
 
 /* =========================
    HEADER
 ========================= */
 
 .explore-header {
-  max-width: 1000px;
+  max-width: 1150px;
   margin: 0 auto;
-  padding: 55px 30px 35px;
+  padding: 65px 30px 45px;
   text-align: center;
 }
 
 .explore-header span {
   display: block;
-  color: #d95a24;
-  font-size: 10px;
+  margin-bottom: 14px;
+
+  color: #c77b30;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1.8px;
-  margin-bottom: 10px;
+  letter-spacing: 2.5px;
 }
 
 .explore-header h1 {
-  margin: 0 0 10px;
-  color: #292929;
-  font-size: 38px;
+  margin: 0 0 16px;
+
+  color: #24352b;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 46px;
   font-weight: 700;
+  letter-spacing: -1px;
 }
 
 .explore-header p {
-  margin: 0;
-  color: #777777;
-  font-size: 14px;
-  line-height: 1.7;
+  max-width: 720px;
+  margin: 0 auto;
+
+  color: #6f766f;
+  font-size: 16px;
+  line-height: 1.8;
 }
 
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.explore-content {
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 0 45px 45px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 32px;
+  align-items: start;
+}
 
 /* =========================
    REGIONS GRID
 ========================= */
 
 .regions-grid {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 30px 20px;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  gap: 24px;
 }
-
 
 /* =========================
    REGION CARD
 ========================= */
 
 .region-card {
-  min-height: 250px;
-  padding: 30px 24px;
+  min-height: 270px;
+  padding: 32px 24px;
 
   background: #ffffff;
-  border: 1px solid #eeeeee;
+  border: 1px solid #e6e2d9;
   border-radius: 16px;
 
   text-decoration: none;
@@ -98,65 +116,67 @@
   align-items: center;
   justify-content: center;
 
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 20px rgba(36, 53, 43, 0.07);
 
   transition:
     transform 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .region-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 
-  box-shadow:
-    0 10px 24px rgba(0, 0, 0, 0.08);
+  border-color: #c77b30;
+
+  box-shadow: 0 14px 32px rgba(36, 53, 43, 0.13);
 }
-
 
 /* =========================
    REGION ICON
 ========================= */
 
 .region-icon {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 18px;
+  width: 76px;
+  height: 76px;
+  margin-bottom: 20px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 42px;
-}
+  background: #f2f6ef;
+  border-radius: 50%;
 
+  font-size: 44px;
+}
 
 /* =========================
    REGION TITLE
 ========================= */
 
 .region-card h2 {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
 
-  color: #292929;
+  color: #24352b;
 
-  font-size: 21px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 23px;
   font-weight: 700;
 }
-
 
 /* =========================
    REGION DESCRIPTION
 ========================= */
 
 .region-card p {
-  margin: 0 0 18px;
+  min-height: 42px;
+  margin: 0 0 20px;
 
-  color: #777777;
-
-  font-size: 12px;
-  line-height: 1.6;
+  color: #777d77;
+  font-size: 13px;
+  line-height: 1.7;
 }
-
 
 /* =========================
    EXPLORE BUTTON
@@ -165,45 +185,148 @@
 .explore-button {
   display: inline-block;
 
-  padding: 9px 17px;
+  padding: 10px 21px;
 
-  background: #d95a24;
+  background: #24523a;
   color: #ffffff;
 
-  border-radius: 20px;
+  border-radius: 7px;
 
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
 
   transition:
-    background 0.2s ease;
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .region-card:hover .explore-button {
-  background: #bd4818;
+  background: #c77b30;
 }
 
+/* =========================
+   AI CHEF SIDE PANEL
+========================= */
+
+.ai-chef-side {
+  position: sticky;
+  top: 25px;
+
+  padding: 38px 28px;
+
+  background: #24523a;
+  color: #ffffff;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow: 0 14px 34px rgba(36, 53, 43, 0.18);
+}
+
+.ai-chef-icon {
+  width: 82px;
+  height: 82px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+
+  font-size: 48px;
+}
+
+.ai-chef-side h2 {
+  margin: 0 0 14px;
+
+  color: #ffffff;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.ai-chef-side p {
+  margin: 0 0 16px;
+
+  color: #dce7df;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.ai-chef-side button {
+  margin-top: 14px;
+
+  padding: 13px 26px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #c77b30;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ai-chef-side button:hover {
+  background: #db9144;
+  transform: translateY(-2px);
+}
 
 /* =========================
-   CREATOR FOOTER
+   FOOTER
 ========================= */
 
 .creator-footer {
   text-align: center;
 
-  padding: 25px 20px 35px;
+  padding: 30px 20px 40px;
 
-  color: #999999;
-
-  font-size: 12px;
+  color: #8a8f8a;
+  font-size: 13px;
   font-weight: 500;
-
   letter-spacing: 0.5px;
 }
 
-
 /* =========================
    TABLET
+========================= */
+
+@media (max-width: 1100px) {
+
+  .explore-content {
+    grid-template-columns: 1fr;
+  }
+
+  .regions-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ai-chef-side {
+    position: static;
+
+    max-width: 650px;
+    width: 100%;
+
+    margin: 8px auto 0;
+
+    box-sizing: border-box;
+  }
+}
+
+/* =========================
+   SMALL TABLET
 ========================= */
 
 @media (max-width: 850px) {
@@ -212,8 +335,10 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .explore-header h1 {
+    font-size: 40px;
+  }
 }
-
 
 /* =========================
    MOBILE
@@ -222,33 +347,47 @@
 @media (max-width: 550px) {
 
   .brand {
-    height: 65px;
+    height: 75px;
     padding: 0 5%;
   }
 
   .brand h2 {
-    font-size: 21px;
+    font-size: 28px;
   }
 
   .explore-header {
-    padding: 40px 20px 28px;
+    padding: 45px 20px 32px;
+  }
+
+  .explore-header span {
+    font-size: 11px;
   }
 
   .explore-header h1 {
     font-size: 32px;
   }
 
+  .explore-header p {
+    font-size: 14px;
+  }
+
+  .explore-content {
+    padding: 0 20px 30px;
+  }
+
   .regions-grid {
-    padding: 0 20px 15px;
     grid-template-columns: 1fr;
   }
 
   .region-card {
-    min-height: 220px;
+    min-height: 240px;
+  }
+
+  .ai-chef-side {
+    padding: 32px 22px;
   }
 
   .creator-footer {
-    padding: 20px 15px 30px;
+    padding: 24px 15px 32px;
   }
-
 }
