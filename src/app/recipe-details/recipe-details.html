@@ -153,7 +153,10 @@
 
               <option [ngValue]="serving">
                 {{ serving }}
-                {{ serving === 1 ? 'person' : 'people' }}
+               {{ selectedLanguage === 'Hindi'
+  ? (selectedServings === 1 ? 'व्यक्ति' : 'लोग')
+  : (selectedServings === 1 ? 'person' : 'people')
+}}
               </option>
 
             }
@@ -354,7 +357,7 @@
         </h3>
 
         <p>
-          {{ recipeData.chefTip }}
+         {{ getTranslated('chefTip') }}
         </p>
 
       </div>
