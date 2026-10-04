@@ -49,23 +49,23 @@ export class RecipeDetails {
   selectedLanguage = 'English';
 
   languageOptions: string[] = [
-    'English',
-    'Hindi',
-    'Odia',
-    'Bengali',
-    'Punjabi',
-    'Gujarati',
-    'Marathi',
-    'Tamil',
-    'Telugu',
-    'Kannada',
-    'Malayalam',
-    'Assamese',
-    'Nepali',
-    'Konkani',
-    'Mizo',
-    'Kokborok'
-  ];
+  'English',
+  'Bengali',
+  'Punjabi',
+  'Hindi',
+  'Odia',
+  'Tamil',
+  'Telugu',
+  'Kannada',
+  'Malayalam',
+  'Assamese',
+  'Gujarati',
+  'Marathi',
+  'Nepali',
+  'Konkani',
+  'Mizo',
+  'Kokborok'
+];
 
   stateLanguageMap: Record<string, string> = {
     'Odisha': 'Odia',
@@ -93,13 +93,19 @@ export class RecipeDetails {
 setLanguage(language: string): void {
   this.selectedLanguage = language;
 }
-
+setDefaultLanguage(): void {
+  this.selectedLanguage = 'English';
+}
 getTranslated(field: string): any {
-  if (
-    this.selectedLanguage !== 'English' &&
-    this.recipeData?.translations?.[this.selectedLanguage]?.[field]
-  ) {
-    return this.recipeData.translations[this.selectedLanguage][field];
+  if (this.selectedLanguage === 'English') {
+    return this.recipeData?.[field as keyof Recipe];
+  }
+
+  const translation =
+    this.recipeData?.translations?.[this.selectedLanguage]?.[field];
+
+  if (translation !== undefined && translation !== null) {
+    return translation;
   }
 
   return this.recipeData?.[field as keyof Recipe];
@@ -844,8 +850,8 @@ translations: {
 
     englishCaption:
   'Macher Jhol — the familiar taste of home on a Bengali plate.',
-
-translations: {
+  
+ translations: {
   Bengali: {
     name: 'মাছের ঝোল',
 
@@ -886,12 +892,11 @@ translations: {
     serving:
       'গরম ভাতের সঙ্গে পরিবেশন করুন।',
 
-    chefTip:
+        chefTip:
       'সরিষার তেল মাছের ঝোলে বাঙালি রান্নার বিশেষ সুগন্ধ এনে দেয়।'
+    }
   }
-}
-
-
+};
   // =========================================================
   // BIHAR
   // =========================================================
@@ -954,38 +959,8 @@ translations: {
 
     englishCaption:
       'Litti Chokha — the earthy aroma and simplicity of Bihar on one plate.',
-      translations: {
-  Odia: {
-    name: 'ଡାଲମା',
-    description: 'ଡାଲି ଏବଂ ବିଭିନ୍ନ ପନିପରିବାରେ ପ୍ରସ୍ତୁତ ଓଡ଼ିଶାର ପାରମ୍ପରିକ ଖାଦ୍ୟ।',
-    about: 'ଡାଲମା ଓଡ଼ିଶାର ଏକ ପ୍ରସିଦ୍ଧ ପାରମ୍ପରିକ ବ୍ୟଞ୍ଜନ।',
-    story: 'ଡାଲି ଓ ପନିପରିବାର ସରଳ ମିଶ୍ରଣ ଏହାକୁ ଓଡ଼ିଆ ଘରର ଏକ ପ୍ରିୟ ଖାଦ୍ୟ କରିଛି।',
-    ingredients: [
-      'ହରଡ଼ ଡାଲି – 1 କପ',
-      'କଞ୍ଚା ପପୟା – 1 କପ',
-      'ଆଳୁ – 2ଟି',
-      'କଖାରୁ – 1 କପ',
-      'ଟମାଟୋ – 1ଟି'
-    ],
-    masala: [
-      'ପଞ୍ଚ ଫୁଟଣ',
-      'ଜିରା',
-      'ଶୁଖିଲା ଲଙ୍କା',
-      'ଅଦା',
-      'ହଳଦୀ',
-      'ଲୁଣ'
-    ],
-    preparation: [
-      'ଡାଲିକୁ ଧୋଇ ପନିପରିବା ଏବଂ ହଳଦୀ ସହିତ ସିଝାନ୍ତୁ।',
-      'କଡ଼ାଇରେ ତେଲ ଗରମ କରି ପଞ୍ଚ ଫୁଟଣ ଓ ଶୁଖିଲା ଲଙ୍କାର ଛୁଙ୍କ ଦିଅନ୍ତୁ।',
-      'ଏଥିରେ ସିଝା ଡାଲି ଓ ପନିପରିବା ମିଶାନ୍ତୁ।',
-      'କିଛି ମିନିଟ୍ ଧୀରେ ଧୀରେ ରାନ୍ଧନ୍ତୁ।',
-      'ଗରମ ଭାତ ସହିତ ପରିବେଷଣ କରନ୍ତୁ।'
-    ],
-    serving: 'ଗରମ ଭାତ ସହିତ ଡାଲମା ପରିବେଷଣ କରନ୍ତୁ।',
-    chefTip: 'ପଞ୍ଚ ଫୁଟଣର ଛୁଙ୍କ ଡାଲମାକୁ ଏହାର ବିଶେଷ ସ୍ୱାଦ ଦିଏ।'
-  }
-}
+  };
+      
   // =========================================================
   // JHARKHAND
   // =========================================================
